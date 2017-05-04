@@ -1,8 +1,8 @@
 import * as jest2 from 'jest'
-import { 
+import {
   initialize,
-	signInWithRedirect, 
-	onAuthStateChanged 
+	signInWithRedirect,
+	onAuthStateChanged
 } from './firebase'
 
 const fakeSignInWithRedirect = jest.fn()
@@ -43,5 +43,16 @@ describe('signInWithRedirect', () => {
       .mockReturnValueOnce(Promise.resolve())
     signInWithRedirect(fakeFirebase)()
 		expect(fakeFirebase.auth().signInWithRedirect).toBeCalled()
+  })
+})
+
+describe('onAuthStateChanged', () => {
+  it('returns a function', () => {
+    expect(typeof onAuthStateChanged(fakeFirebase)).toBe('function')
+  })
+  it('calls onAuthStateChanged with the provided callback function', () => {
+    const handlerFunction = jest.fn()
+    onAuthStateChanged(fakeFirebase)(handlerFunction)
+    expect(fakeOnAuthStateChanged).toBeCalledWith(handlerFunction)
   })
 })
