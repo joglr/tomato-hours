@@ -17,17 +17,13 @@ const App = createClass({
   getInitialState: () => ({ user: null }),
   onAuthStateChanged: function(user) {
     if (!user) signInWithRedirect(firebase)()
-    else {
-      this.setState({ user })
-    }
+    else this.setState({ user })
   },
   componentDidMount: function() {
     onAuthStateChanged(firebase)(this.onAuthStateChanged)
   },
   render: function() {
-    return (
-      <DefaultView />
-    )
+    return <DefaultView />
   }
 })
 
