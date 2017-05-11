@@ -2,11 +2,8 @@
 
 **Status**: test passing
 
-**TimeButton.js**
-  * ~~toggle button color~~
-
 **PauseButton.js**
-  * add functionality -> Timer.js
+  * ~~add functionality -> DefaultView.js~~
 
 **App.js**
   * add tests

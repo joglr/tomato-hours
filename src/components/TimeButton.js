@@ -7,13 +7,23 @@ const TimeButton = createClass({
     onButtonClick: () => {}
   }),
   render: function () {
-    const label = this.props.active
-      ? 'Stop'
-      : 'Start'
-    const color = this.props.active
-      ? { 'secondary': true }
-      : { 'primary': true }
-    return <Button raised { ...color } label={ label } onClick={ this.props.onButtonClick } />
+    const propsToAdd = {
+      label: this.props.active
+        ? 'Stop'
+        : 'Start'
+    }
+    propsToAdd[this.props.active
+      ? 'secondary'
+      : 'primary'
+    ] = true
+    const icon = this.props.active
+      ? 'timer'
+      : 'timer_off'
+    return <Button
+      raised
+      { ...propsToAdd }
+      tooltipLabel= { `${propsToAdd.label} timer`  }
+      onClick={ this.props.onButtonClick }>{ icon }</Button>
   }
 })
 

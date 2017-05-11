@@ -4,7 +4,24 @@ import Button from 'react-md/lib/Buttons/Button'
 
 const PauseButton = createClass({
   render: function() {
-    return <Button raised primary label="Pause" />
+    console.log(this.props.paused)
+    const propsToAdd = {
+      label: this.props.paused
+        ? 'Unpause'
+        : 'Pause'
+    }
+    propsToAdd[this.props.paused
+      ? 'raised'
+      : 'flat'
+    ] = true
+    const icon = this.props.paused
+      ? 'play_arrow'
+      : 'pause'
+
+    return <Button
+      { ...propsToAdd }
+      primary
+      onClick={ this.props.onButtonClick }>{ icon }</Button>
   }
 })
 
