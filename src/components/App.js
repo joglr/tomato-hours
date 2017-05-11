@@ -3,6 +3,7 @@ import createClass from 'create-react-class'
 import { initialize, onAuthStateChanged, signInWithRedirect } from './firebase'
 import firebase from 'firebase'
 import DefaultView from './DefaultView'
+import './../theme'
 
 initialize(firebase)({
   apiKey: "AIzaSyBxAilPu1Y20NfJToW--lr5EHMzw-SflGM",
