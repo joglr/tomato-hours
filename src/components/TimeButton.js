@@ -10,7 +10,10 @@ const TimeButton = createClass({
     const label = this.props.active
       ? 'Stop'
       : 'Start'
-    return <Button raised primary label={ label } onClick={ this.props.onButtonClick } />
+    const color = this.props.active
+      ? { 'secondary': true }
+      : { 'primary': true }
+    return <Button raised { ...color } label={ label } onClick={ this.props.onButtonClick } />
   }
 })
 
