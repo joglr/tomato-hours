@@ -7,7 +7,10 @@ const TimeButton = createClass({
     onButtonClick: () => {}
   }),
   render: function () {
-    return <Button raised primary label="Toggle" onClick={this.props.onButtonClick} />
+    const label = this.props.active
+      ? 'Stop'
+      : 'Start'
+    return <Button raised primary label={ label } onClick={ this.props.onButtonClick } />
   }
 })
 
