@@ -49,7 +49,7 @@ const DefaultView = createClass({
       formattedTime: getFormattedTime(startTime)
     })
   },
-  stopTimer: function() {
+  stopTimer: function () {
     window.clearInterval(this.state.timer)
     this.setState(initialState)
   },
@@ -58,11 +58,12 @@ const DefaultView = createClass({
     this.setState({ formattedTime })
   },
   render: function () {
+    const active = !!this.state.startTime
     let children = [
       <Timer  time={ this.state.formattedTime }/>,
       <TimeButton
         key={ 1 }
-        active={ !!this.state.timer }
+        active={ active }
         time={ this.state.formattedTime }
         onButtonClick={ this.toggleTimer } />
     ].reverse()
