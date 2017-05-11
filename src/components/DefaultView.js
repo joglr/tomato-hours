@@ -5,18 +5,15 @@ import PauseButton from './PauseButton'
 import Timer from './Timer'
 
 const initialState = {
-  startTime: null,
+  ellapsedTime: null,
   timer: null,
-  formattedTime: '0s'
+  formattedTime: '0s',
 }
 
-const convertToValues = function(startTime) {
-  const diff = new Date().getTime() - startTime
-
-  const values = []
+const convertToValues = function(ellapsedTime) {
+  const values = [ ellapsedTime ]
   const factors = [60, 60, 24, 365.2422]
 
-  values.push(diff / 1000)
   factors.forEach((factor, i) => values.push(values[i] / factor))
 
   return values
@@ -24,10 +21,10 @@ const convertToValues = function(startTime) {
     .map(Math.floor)
 }
 
-const getFormattedTime = function (startTime) {
+const getFormattedTime = function (ellapsedTime) {
   const units = ['s', 'm', 'h', 'd', 'y']
 
-  return convertToValues(startTime)
+  return convertToValues(ellapsedTime)
     .splice(0)
     .filter((x, i) => x > 0 || i === 0)
     .map((x, i) => `${x}${units[i]}`)
@@ -38,27 +35,49 @@ const getFormattedTime = function (startTime) {
 const DefaultView = createClass({
   getInitialState: () => initialState,
   toggleTimer: function () {
-    if (this.state.startTime) this.stopTimer()
-    else this.startTimer()
+    if (this.state.ellapsedTime > 0) {
+      this.resetTimer()
+      this.clearTimerInterval()
+    }
+    else {
+      this.initializeTimer()
+      this.setTimerInterval()
+    }
   },
-  startTimer: function () {
-    const startTime = new Date().getTime()
+  initializeTimer: function () {
     this.setState({
-      startTime,
-      timer: window.setInterval(this.tick, 1000),
-      formattedTime: getFormattedTime(startTime)
+      ellapsedTime: 0,
+      formattedTime: getFormattedTime(0)
     })
   },
-  stopTimer: function () {
+  setTimerInterval: function () {
+    this.clearTimerInterval()
+    this.setState({
+      timer: window.setInterval(this.tick, 1000)
+    })
+  },
+  clearTimerInterval: function () {
     window.clearInterval(this.state.timer)
-    this.setState(initialState)
+    this.setState({ timer: null })
+  },
+  resetTimer: function () {
+    this.setState({ ellapsedTime: null })
+  },
+  pauseUnPauseTimer: function () {
+    this.state.timer === null
+      ? this.setTimerInterval()
+      : this.clearTimerInterval()
   },
   tick: function () {
-    const formattedTime = getFormattedTime(this.state.startTime)
-    this.setState({ formattedTime })
+    const ellapsedTime = this.state.ellapsedTime + 1
+    const formattedTime = getFormattedTime(ellapsedTime)
+    const stateToSet = { formattedTime, ellapsedTime }
+    this.setState(stateToSet)
+    console.log(stateToSet)
   },
   render: function () {
-    const active = !!this.state.startTime
+    const active = this.state.ellapsedTime !== null
+    const paused = this.state.timer === null
     let children = [
       <Timer  time={ this.state.formattedTime }/>,
       <TimeButton
@@ -67,7 +86,10 @@ const DefaultView = createClass({
         time={ this.state.formattedTime }
         onButtonClick={ this.toggleTimer } />
     ].reverse()
-    if (this.state.timer) children.unshift(<PauseButton key={ 2 }/>)
+    if (active) children.unshift(<PauseButton
+      key={ 2 }
+      onButtonClick={ this.pauseUnPauseTimer }
+      paused={ paused } />)
     return <div> { children.reverse().map((el, i) => <div key={ i }>{ el }</div>) } </div>
   }
 })
