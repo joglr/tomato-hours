@@ -17,8 +17,8 @@ const TimeButton = createClass({
       : 'primary'
     ] = true
     const icon = this.props.active
-      ? 'timer'
-      : 'timer_off'
+      ? 'timer_off'
+      : 'timer'
     return <Button
       raised
       { ...propsToAdd }
