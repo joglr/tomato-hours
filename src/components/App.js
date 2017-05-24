@@ -2,6 +2,7 @@ import React from 'react'
 import createClass from 'create-react-class'
 import { initialize, onAuthStateChanged, signInWithRedirect } from './firebase'
 import firebase from 'firebase'
+import Shell from './Shell'
 import DefaultView from './DefaultView'
 import './../theme'
 
@@ -24,7 +25,11 @@ const App = createClass({
     onAuthStateChanged(firebase)(this.onAuthStateChanged)
   },
   render: function() {
-    return <DefaultView />
+    return <div>
+      <Shell>
+        <DefaultView />
+      </Shell>
+    </div>
   }
 })
 
