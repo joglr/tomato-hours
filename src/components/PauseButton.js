@@ -20,7 +20,8 @@ const PauseButton = createClass({
 
     return <Button
       { ...propsToAdd }
-      tooltipLabel= { `${propsToAdd.label} timer`  }
+      tooltipLabel={ `${propsToAdd.label} timer`  }
+      tooltipDelay={ 200 }
       primary
       onClick={ this.props.onButtonClick }>{ icon }</Button>
   }

@@ -6,7 +6,7 @@ const Timer = createClass({
     time: '0s'
   }),
   render: function() {
-    return <h1>{this.props.time}</h1>
+    return <h1 className="timer">{this.props.time}</h1>
   }
 })
 

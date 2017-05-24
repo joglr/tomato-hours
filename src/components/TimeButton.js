@@ -22,7 +22,8 @@ const TimeButton = createClass({
     return <Button
       raised
       { ...propsToAdd }
-      tooltipLabel= { `${propsToAdd.label} timer`  }
+      tooltipLabel={ `${propsToAdd.label} timer`  }
+      tooltipDelay={ 200 }
       onClick={ this.props.onButtonClick }>{ icon }</Button>
   }
 })
