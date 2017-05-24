@@ -1,0 +1,12 @@
+.default-view {
+
+}
+.timer-button-wrap {
+  padding: 1em;
+}
+.default-view .md-btn {
+  width: 100%;
+}
+.default-view .timer {
+  text-align: center;
+}

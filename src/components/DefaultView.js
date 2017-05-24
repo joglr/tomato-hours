@@ -1,8 +1,10 @@
 import React from 'react'
 import createClass from 'create-react-class'
+import Timer from './Timer'
 import TimeButton from './TimeButton'
 import PauseButton from './PauseButton'
-import Timer from './Timer'
+import Options from './Options'
+import './DefaultView.css'
 
 const initialState = {
   ellapsedTime: null,
@@ -79,18 +81,39 @@ const DefaultView = createClass({
     const active = this.state.ellapsedTime !== null
     const paused = this.state.timer === null
     let children = [
-      <Timer  time={ this.state.formattedTime }/>,
-      <TimeButton
-        key={ 1 }
-        active={ active }
-        time={ this.state.formattedTime }
-        onButtonClick={ this.toggleTimer } />
     ].reverse()
-    if (active) children.unshift(<PauseButton
-      key={ 2 }
-      onButtonClick={ this.pauseUnPauseTimer }
-      paused={ paused } />)
-    return <div> { children.reverse().map((el, i) => <div key={ i }>{ el }</div>) } </div>
+    if (active) children.push(
+      <div className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
+        <div className="timer-button-wrap">
+          <PauseButton
+          key={ 0 }
+          onButtonClick={ this.pauseUnPauseTimer }
+          paused={ paused } />
+        </div>
+      </div>
+      )
+    return <div className="md-grid default-view">
+      <div className="md-cell--4-phone md-cell--6-tablet md-cell--1-tablet-offset md-cell--6-desktop md-cell--3-desktop-offset">
+        <div>
+          <Timer
+            key={ 0 }
+            time={ this.state.formattedTime }/>
+        </div>
+        <div className="md-grid">
+          <div className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
+            <div className="timer-button-wrap">
+              <TimeButton
+                key={ 0 }
+                active={ active }
+                time={ this.state.formattedTime }
+                onButtonClick={ this.toggleTimer } />
+              </div>
+            </div>
+          { children }
+        </div>
+        <div> <Options /> </div>
+      </div>
+    </div>
   }
 })
 
