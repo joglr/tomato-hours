@@ -19,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject"
+  },
+  "peerDependencies": {
+    "npm": "^5.0.0"
   }
 }
