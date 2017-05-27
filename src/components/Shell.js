@@ -4,11 +4,13 @@ import Toolbar from 'react-md/lib/Toolbars'
 import Button from 'react-md/lib/Buttons'
 
 const Shell = createClass({
+  getDefaultProps: () => ({ appTitle: "Untitled App" }),
   render: function() {
     return <div>
+      <title>{ this.props.appTitle }</title>
       <Toolbar
         colored
-        title="Work Hour Tracker"
+        title={ this.props.appTitle}
         nav={ <Button key="nav" icon>menu</Button> }
         actions={ [] }/>
       <div>
