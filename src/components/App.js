@@ -15,6 +15,8 @@ initialize(firebase)({
   messagingSenderId: "595777818732"
 })
 
+const appTitle = "Work Hour Tracker"
+
 const App = createClass({
   getInitialState: () => ({ user: null }),
   onAuthStateChanged: function (user) {
@@ -32,7 +34,7 @@ const App = createClass({
   },
   render: function () {
     return <div>
-      <Shell>
+      <Shell appTitle={ appTitle }>
         <DefaultView timerStoppedCallback={ this.onTimerStopped }/>
       </Shell>
     </div>
