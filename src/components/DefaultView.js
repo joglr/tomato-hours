@@ -1,6 +1,6 @@
 import React from 'react'
 import createClass from 'create-react-class'
-import Timer from './Timer'
+import TimeDisplay from './TimeDisplay'
 import StartButton from './StartButton'
 import PauseButton from './PauseButton'
 import Options from './Options'
@@ -104,7 +104,7 @@ const DefaultView = createClass({
     return <div className="md-grid default-view">
       <div className="md-cell--4-phone md-cell--6-tablet md-cell--1-tablet-offset md-cell--6-desktop md-cell--3-desktop-offset">
         <div>
-          <Timer
+          <TimeDisplay
             key={ 0 }
             time={ this.state.formattedTime }/>
         </div>
