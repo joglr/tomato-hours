@@ -35,9 +35,15 @@ const getFormattedTime = function (ellapsedTime) {
 }
 
 const DefaultView = createClass({
+  getDefaultProps: () => ({
+    timerStoppedCallback: () => false
+  }),
   getInitialState: () => initialState,
   toggleTimer: function () {
     if (this.state.ellapsedTime !== null) {
+      if (this.state.ellapsedTime > 0) {
+        this.props.timerStoppedCallback(this.state.ellapsedTime)
+      }
       this.resetTimer()
       this.clearTimerInterval()
     }
