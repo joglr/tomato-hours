@@ -17,17 +17,23 @@ initialize(firebase)({
 
 const App = createClass({
   getInitialState: () => ({ user: null }),
-  onAuthStateChanged: function(user) {
+  onAuthStateChanged: function (user) {
     if (!user) signInWithRedirect(firebase)()
     else this.setState({ user })
   },
-  componentDidMount: function() {
+  componentDidMount: function () {
     onAuthStateChanged(firebase)(this.onAuthStateChanged)
   },
-  render: function() {
+  onTimerStopped: function ({ ellapsedTime, startTime }) {
+    console.log({ 
+      ellapsedTime, 
+      startTime: new Date(startTime).toTimeString()
+    })
+  },
+  render: function () {
     return <div>
       <Shell>
-        <DefaultView />
+        <DefaultView timerStoppedCallback={ this.onTimerStopped }/>
       </Shell>
     </div>
   }
