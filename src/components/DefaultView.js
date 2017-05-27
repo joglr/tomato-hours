@@ -84,9 +84,7 @@ const DefaultView = createClass({
   tick: function () {
     const ellapsedTime = this.state.ellapsedTime + 1
     const formattedTime = getFormattedTime(ellapsedTime)
-    const stateToSet = { formattedTime, ellapsedTime }
-    this.setState(stateToSet)
-    console.log(stateToSet)
+    this.setState({ formattedTime, ellapsedTime })
   },
   render: function () {
     const active = this.state.ellapsedTime !== null
