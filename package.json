@@ -22,5 +22,9 @@
   },
   "peerDependencies": {
     "npm": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://jonasroessum@bitbucket.org/jonasroessum/time-tracker.git"
   }
 }
