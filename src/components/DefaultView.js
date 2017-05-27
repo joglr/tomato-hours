@@ -42,7 +42,8 @@ const DefaultView = createClass({
   toggleTimer: function () {
     if (this.state.ellapsedTime !== null) {
       if (this.state.ellapsedTime > 0) {
-        this.props.timerStoppedCallback(this.state.ellapsedTime)
+        const { ellapsedTime, startTime } = this.state
+        this.props.timerStoppedCallback({ ellapsedTime, startTime })
       }
       this.resetTimer()
       this.clearTimerInterval()
@@ -55,7 +56,8 @@ const DefaultView = createClass({
   initializeTimer: function () {
     this.setState({
       ellapsedTime: 0,
-      formattedTime: getFormattedTime(0)
+      formattedTime: getFormattedTime(0),
+      startTime: new Date().getTime()
     })
   },
   setTimerInterval: function () {
@@ -69,7 +71,10 @@ const DefaultView = createClass({
     this.setState({ timer: null })
   },
   resetTimer: function () {
-    this.setState({ ellapsedTime: null })
+    this.setState({ 
+      ellapsedTime: null,
+      startTime: null
+    })
   },
   pauseUnPauseTimer: function () {
     this.state.timer === null
