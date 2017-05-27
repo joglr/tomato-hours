@@ -1,7 +1,7 @@
 import React from 'react'
 import createClass from 'create-react-class'
 import Timer from './Timer'
-import TimeButton from './TimeButton'
+import StartButton from './StartButton'
 import PauseButton from './PauseButton'
 import Options from './Options'
 import './DefaultView.css'
@@ -37,7 +37,7 @@ const getFormattedTime = function (ellapsedTime) {
 const DefaultView = createClass({
   getInitialState: () => initialState,
   toggleTimer: function () {
-    if (this.state.ellapsedTime > 0) {
+    if (this.state.ellapsedTime !== null) {
       this.resetTimer()
       this.clearTimerInterval()
     }
@@ -102,7 +102,7 @@ const DefaultView = createClass({
         <div className="md-grid">
           <div className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
             <div className="timer-button-wrap">
-              <TimeButton
+              <StartButton
                 key={ 0 }
                 active={ active }
                 time={ this.state.formattedTime }

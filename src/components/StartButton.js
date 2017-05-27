@@ -2,7 +2,7 @@ import React from 'react'
 import createClass from 'create-react-class'
 import Button from 'react-md/lib/Buttons/Button'
 
-const TimeButton = createClass({
+const StartButton = createClass({
   getDefaultProps: () => ({
     onButtonClick: () => {}
   }),
@@ -28,4 +28,4 @@ const TimeButton = createClass({
   }
 })
 
-export default TimeButton
+export default StartButton
