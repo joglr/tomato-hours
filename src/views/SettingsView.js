@@ -25,8 +25,7 @@ const Settings = createClass({
           callback={ passSetting }
            />
         { settings.showEarnedSalary
-          ? [
-            <div key="hourly-rate" className="settings__text-field-wrapper">
+          ? <div key="hourly-rate" className="settings__text-field-wrapper">
               <TextField
                 id="floatingCenterTitle"
                 leftIcon={<FontIcon>attach_money</FontIcon>}
@@ -35,16 +34,15 @@ const Settings = createClass({
                 placeholder="123"
                 onChange={ value => passSetting("hourlyRate", value) }
               />
-            </div>,
-            <Setting
-              setting="rememberSalary"
-              label="Remember salary"
-              settings={ settings }
-              callback={ passSetting }
-            />
-            ]
+            </div>
           : []
         }
+        <Setting
+          setting="rememberSettings"
+          label="Remember settings"
+          settings={ settings }
+          callback={ passSetting }
+        />
       </List>
     </div>
   }
