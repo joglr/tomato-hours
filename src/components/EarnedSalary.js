@@ -8,7 +8,7 @@ const EarnedSalary = createClass({
       const { ellapsedTime, hourlyRate } = this.props
       return <div style={{
         padding: "1rem"
-      }}>Earned salary: <span style={{ fontWeight: "bold" }}>{ Math.round((this.props.ellapsedTime / 3600) * hourlyRate) }</span></div>
+      }}>Earned salary: <span style={{ fontWeight: "bold" }}>{ Math.round((this.props.ellapsedTime / 3600) * hourlyRate || 0) }</span></div>
     } else {
       return <div></div>
     }
