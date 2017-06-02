@@ -7,7 +7,8 @@ const PauseButton = createClass({
     const propsToAdd = {
       label: this.props.paused
         ? 'Unpause'
-        : 'Pause'
+        : 'Pause',
+      disabled: this.props.disabled
     }
     propsToAdd[this.props.paused
       ? 'raised'
