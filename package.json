@@ -13,6 +13,7 @@
     "roboto-fontface": "^0.7.0"
   },
   "devDependencies": {
+    "amdefine": "^1.0.1",
     "react-scripts": "0.9.5"
   },
   "scripts": {
