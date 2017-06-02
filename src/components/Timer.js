@@ -3,7 +3,6 @@ import createClass from 'create-react-class'
 import TimeDisplay from './TimeDisplay'
 import StartButton from './StartButton'
 import PauseButton from './PauseButton'
-import './DefaultView.css'
 
 const initialState = {
   ellapsedTime: null,

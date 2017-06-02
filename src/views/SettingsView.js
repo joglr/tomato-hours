@@ -3,13 +3,13 @@ import createClass from 'create-react-class'
 import PropTypes from 'prop-types'
 
 import Subheader from 'react-md/lib/Subheaders'
-import Setting from './Setting'
 import Divider from 'react-md/lib/Dividers'
 import List from 'react-md/lib/Lists/List'
 import ListItem from 'react-md/lib/Lists/ListItem'
 import FontIcon from 'react-md/lib/FontIcons'
 import TextField from 'react-md/lib/TextFields'
-import './Settings.css'
+import Setting from './../components/Setting'
+import './SettingsView.css'
 
 const Settings = createClass({
   getDefaultProps: () => ({ passSetting: () => null }),

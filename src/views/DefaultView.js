@@ -1,7 +1,7 @@
 import React from 'react'
 import createClass from 'create-react-class'
-import Timer from './Timer'
-import Settings from './Settings'
+import Timer from './../components/Timer'
+import SettingsView from './SettingsView'
 import './DefaultView.css'
 
 const DefaultView = createClass({
@@ -22,7 +22,7 @@ const DefaultView = createClass({
           <Timer />
         </div>
         <div>
-          <Settings
+          <SettingsView
             passSetting={ this.setSetting }
             settings={ this.state }
           />

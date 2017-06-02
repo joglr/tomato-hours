@@ -1,10 +1,10 @@
 import React from 'react'
 import createClass from 'create-react-class'
-import { initialize, onAuthStateChanged, signInWithRedirect } from './firebase'
+import { initialize, onAuthStateChanged, signInWithRedirect } from './components/firebase'
 import firebase from 'firebase'
-import Shell from './Shell'
-import DefaultView from './DefaultView'
-import './../theme'
+import Shell from './components/Shell'
+import DefaultView from './views/DefaultView'
+import './theme'
 
 initialize(firebase)({
   apiKey: "AIzaSyBxAilPu1Y20NfJToW--lr5EHMzw-SflGM",
@@ -27,8 +27,8 @@ const App = createClass({
     onAuthStateChanged(firebase)(this.onAuthStateChanged)
   },
   onTimerStopped: function ({ ellapsedTime, startTime }) {
-    console.log({ 
-      ellapsedTime, 
+    console.log({
+      ellapsedTime,
       startTime: new Date(startTime).toTimeString()
     })
   },
