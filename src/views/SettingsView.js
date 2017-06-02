@@ -30,7 +30,8 @@ const Settings = createClass({
                 id="floatingCenterTitle"
                 leftIcon={<FontIcon>attach_money</FontIcon>}
                 label="Hourly rate"
-                value={ settings.hourlyRate || '' }
+                type="number"
+                value={ settings.hourlyRate || undefined }
                 lineDirection="center"
                 placeholder="123"
                 onChange={ value => passSetting("hourlyRate", value) }
