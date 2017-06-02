@@ -2,8 +2,6 @@
 
 **Status**: test passing
 
-**PauseButton.js**
-  * ~~add functionality -> DefaultView.js~~
-
-**App.js**
-  * add tests
+**Options.js**
+  * ~~implement salary option~~
+  * implement earned salary display
