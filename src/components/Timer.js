@@ -83,22 +83,19 @@ const Timer = createClass({
     const ellapsedTime = this.state.ellapsedTime + 1
     const formattedTime = getFormattedTime(ellapsedTime)
     this.setState({ formattedTime, ellapsedTime })
+    if (typeof this.props.tickCallback === 'function') this.props.tickCallback(ellapsedTime)
   },
   render: function () {
+    const { ellapsedTime, formattedTime } = this.state
     const active = this.state.ellapsedTime !== null
     const paused = this.state.timer === null
     return (
       <div>
-        <div>
-          <TimeDisplay
-            key={ 0 }
-            time={ this.state.formattedTime }/>
-        </div>
+        <TimeDisplay time={ formattedTime }/>
         <div className="md-grid md-grid--no-spacing">
           <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
             <div className="timer-button-wrap">
               <StartButton
-                key={ 0 }
                 active={ active }
                 time={ this.state.formattedTime }
                 onButtonClick={ this.toggleTimer } />
@@ -107,7 +104,6 @@ const Timer = createClass({
           <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
             <div className="timer-button-wrap">
               <PauseButton
-              key={ 0 }
               disabled={ !active }
               onButtonClick={ this.pauseUnPauseTimer }
               paused={ paused } />
