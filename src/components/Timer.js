@@ -70,13 +70,13 @@ const Timer = createClass({
     this.setState({ timer: null })
   },
   resetTimer: function () {
-    this.setState({ 
+    this.setState({
       ellapsedTime: null,
       startTime: null
     })
   },
   pauseUnPauseTimer: function () {
-    this.state.timer === null
+    if (this.state.ellapsedTime !== null) this.state.timer === null
       ? this.setTimerInterval()
       : this.clearTimerInterval()
   },
@@ -88,18 +88,6 @@ const Timer = createClass({
   render: function () {
     const active = this.state.ellapsedTime !== null
     const paused = this.state.timer === null
-    let children = [
-    ].reverse()
-    if (active) children.push(
-      <div className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
-        <div className="timer-button-wrap">
-          <PauseButton
-          key={ 0 }
-          onButtonClick={ this.pauseUnPauseTimer }
-          paused={ paused } />
-        </div>
-      </div>
-      )
     return (
       <div>
         <div>
@@ -107,8 +95,8 @@ const Timer = createClass({
             key={ 0 }
             time={ this.state.formattedTime }/>
         </div>
-        <div className="md-grid">
-          <div className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
+        <div className="md-grid md-grid--no-spacing">
+          <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
             <div className="timer-button-wrap">
               <StartButton
                 key={ 0 }
@@ -117,7 +105,15 @@ const Timer = createClass({
                 onButtonClick={ this.toggleTimer } />
             </div>
           </div>
-          { children }
+          <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
+            <div className="timer-button-wrap">
+              <PauseButton
+              key={ 0 }
+              disabled={ !active }
+              onButtonClick={ this.pauseUnPauseTimer }
+              paused={ paused } />
+            </div>
+          </div>
         </div>
       </div>
     )
