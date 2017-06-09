@@ -55,7 +55,7 @@ const Timer = createClass({
     this.setState({
       ellapsedTime: 0,
       formattedTime: getFormattedTime(0),
-      startTime: new Date().getTime()
+      startTime: new Date()
     })
   },
   setTimerInterval: function () {
@@ -80,7 +80,9 @@ const Timer = createClass({
       : this.clearTimerInterval()
   },
   tick: function () {
-    const ellapsedTime = this.state.ellapsedTime + 1
+    const times = [new Date(), this.state.startTime]
+      .map(x => x.getTime() / 1000)
+    const ellapsedTime = (times[0] - times[1])
     const formattedTime = getFormattedTime(ellapsedTime)
     this.setState({ formattedTime, ellapsedTime })
     if (typeof this.props.tickCallback === 'function') this.props.tickCallback(ellapsedTime)
