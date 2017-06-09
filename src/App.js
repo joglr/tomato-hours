@@ -1,6 +1,10 @@
 import React from 'react'
 import createClass from 'create-react-class'
-import { initialize, onAuthStateChanged, signInWithRedirect } from './components/firebase'
+import {
+  initialize,
+  onAuthStateChanged,
+  signInWithRedirect
+} from './firebase'
 import firebase from 'firebase'
 import Shell from './components/Shell'
 import DefaultView from './views/DefaultView'
