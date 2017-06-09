@@ -15,9 +15,7 @@ const DefaultView = createClass({
     settingToSet[setting] = value
     this.setState(settingToSet)
   },
-  onTimerUpdate: function (ellapsedTime) {
-    this.setState({ ellapsedTime })
-  },
+  onTimerUpdate: function (ellapsedTime) { this.setState({ ellapsedTime }) },
   render: function () {
     const { ellapsedTime, showEarnedSalary, hourlyRate } = this.state
     return <div className="md-grid default-view">

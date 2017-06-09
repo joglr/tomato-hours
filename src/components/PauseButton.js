@@ -3,11 +3,11 @@ import createClass from 'create-react-class'
 import Button from 'react-md/lib/Buttons/Button'
 
 const PauseButton = createClass({
-  render: function() {
+  render: function () {
     const propsToAdd = {
-      label: this.props.paused
-        ? 'Unpause'
-        : 'Pause',
+      label: !this.props.paused || this.props.disabled
+        ? 'Pause'
+        : 'Unpause',
       disabled: this.props.disabled
     }
     propsToAdd[this.props.paused

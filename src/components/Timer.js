@@ -1,5 +1,7 @@
 import React from 'react'
 import createClass from 'create-react-class'
+import PropTypes from 'prop-types'
+
 import TimeDisplay from './TimeDisplay'
 import StartButton from './StartButton'
 import PauseButton from './PauseButton'
@@ -32,65 +34,102 @@ const getFormattedTime = function (ellapsedTime) {
     .join(' ')
 }
 
+const timerStoppedCallback = () => false
+
 const Timer = createClass({
-  getDefaultProps: () => ({
-    timerStoppedCallback: () => false
-  }),
+  getDefaultProps: () => ({ timerStoppedCallback }),
   getInitialState: () => initialState,
+  componentWillReceiveProps: function ({ autostart }) {
+    const { startTimer, state: { hasBeenStarted } } = this
+
+    if (autostart && hasBeenStarted !== true) startTimer()
+  },
   toggleTimer: function () {
-    if (this.state.ellapsedTime !== null) {
-      if (this.state.ellapsedTime > 0) {
-        const { ellapsedTime, startTime } = this.state
-        this.props.timerStoppedCallback({ ellapsedTime, startTime })
-      }
-      this.resetTimer()
-      this.clearTimerInterval()
-    }
-    else {
-      this.initializeTimer()
-      this.setTimerInterval()
-    }
+    const { state: { ellapsedTime }, startTimer, stopTimer } = this
+    if (ellapsedTime === null) startTimer()
+    else stopTimer()
+  },
+  startTimer: function () {
+    console.log('%cstartTimer', 'font-weight: bold')
+    this.initializeTimer()
+    this.setTimerInterval()
+  },
+  stopTimer: function () {
+    const {
+      resetTimer,
+      clearTimerInterval,
+      state: { ellapsedTime, startTime },
+      props: { timerStoppedCallback }
+    } = this
+
+    if (ellapsedTime > 0) timerStoppedCallback({ ellapsedTime, startTime })
+    resetTimer()
+    clearTimerInterval()
   },
   initializeTimer: function () {
     this.setState({
+      hasBeenStarted: true,
       ellapsedTime: 0,
       formattedTime: getFormattedTime(0),
       startTime: new Date()
     })
   },
   setTimerInterval: function () {
-    this.clearTimerInterval()
-    this.setState({
-      timer: window.setInterval(this.tick, 1000)
-    })
+    const {
+      clearTimerInterval,
+      tick
+    } = this
+
+    clearTimerInterval()
+    const timer = window.setInterval(tick, 1000)
+    this.setState({ timer })
   },
   clearTimerInterval: function () {
     window.clearInterval(this.state.timer)
     this.setState({ timer: null })
   },
   resetTimer: function () {
-    this.setState({
-      ellapsedTime: null,
-      startTime: null
-    })
+    this.setState({ ellapsedTime: null, startTime: null })
   },
   pauseUnPauseTimer: function () {
-    if (this.state.ellapsedTime !== null) this.state.timer === null
-      ? this.setTimerInterval()
-      : this.clearTimerInterval()
+    const {
+      setTimerInterval,
+      clearTimerInterval,
+      state: {
+        ellapsedTime,
+        timer
+      }
+    } = this
+
+    if (ellapsedTime !== null) timer === null
+      ? setTimerInterval()
+      : clearTimerInterval()
   },
   tick: function () {
-    const times = [new Date(), this.state.startTime]
+    const {
+      state: { startTime },
+      props: { tickCallback }
+    } = this
+
+    const times = [new Date(), startTime]
       .map(x => x.getTime() / 1000)
     const ellapsedTime = (times[0] - times[1])
     const formattedTime = getFormattedTime(ellapsedTime)
     this.setState({ formattedTime, ellapsedTime })
-    if (typeof this.props.tickCallback === 'function') this.props.tickCallback(ellapsedTime)
+    if (typeof tickCallback === 'function') tickCallback(ellapsedTime)
   },
   render: function () {
-    const { ellapsedTime, formattedTime } = this.state
-    const active = this.state.ellapsedTime !== null
-    const paused = this.state.timer === null
+    const {
+      pauseUnPauseTimer,
+      toggleTimer,
+      state: {
+        ellapsedTime,
+        formattedTime,
+        timer
+      }
+    } = this
+    const active = ellapsedTime !== null
+    const paused = timer === null
     return (
       <div>
         <TimeDisplay time={ formattedTime }/>
@@ -99,15 +138,15 @@ const Timer = createClass({
             <div className="timer-button-wrap">
               <StartButton
                 active={ active }
-                time={ this.state.formattedTime }
-                onButtonClick={ this.toggleTimer } />
+                time={ formattedTime }
+                onButtonClick={ toggleTimer } />
             </div>
           </div>
           <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
             <div className="timer-button-wrap">
               <PauseButton
               disabled={ !active }
-              onButtonClick={ this.pauseUnPauseTimer }
+              onButtonClick={ pauseUnPauseTimer }
               paused={ paused } />
             </div>
           </div>
@@ -116,5 +155,7 @@ const Timer = createClass({
     )
   }
 })
+
+Timer.propTypes = { tickCallback: PropTypes.func }
 
 export default Timer
