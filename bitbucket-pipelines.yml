@@ -11,3 +11,6 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - npm install
           - npm run build
+          - firebase login:ci
+          - firebase use time-tracker-925f3
+          - firebase deploy --only hosting
