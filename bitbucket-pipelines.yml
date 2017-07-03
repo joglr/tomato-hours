@@ -10,7 +10,7 @@ pipelines:
     - step:
         script: # Modify the commands below to build your repository.
           - npm install
-          - npm install firebase-tools
+          - npm install firebase-tools -g
           - npm run build
           - firebase login:ci
           - firebase use time-tracker-925f3
