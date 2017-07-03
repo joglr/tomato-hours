@@ -71,7 +71,9 @@ const Timer = createClass({
       hasBeenStarted: true,
       ellapsedTime: 0,
       formattedTime: getFormattedTime(0),
-      startTime: new Date()
+      startTime: window.location.hash.split('#').length === 2
+        ? new Date(Number(window.location.hash.split('#')[1]))
+        : new Date()
     })
   },
   setTimerInterval: function () {
