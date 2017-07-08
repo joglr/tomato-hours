@@ -1,7 +1,5 @@
 # TODO
 
-**Status**: test passing
-
-**Options.js**
-  * ~~implement salary option~~
-  * implement earned salary display
+ * Make new tomato timer icon
+ * add tomato functionality
+ * ifft integration

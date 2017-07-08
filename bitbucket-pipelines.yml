@@ -12,6 +12,5 @@ pipelines:
           - npm install
           - npm install firebase-tools -g
           - npm run build
-          - firebase login:ci
-          - firebase use time-tracker-925f3
-          - firebase deploy --only hosting
+          - firebase use tomato-hours
+          - firebase deploy --only hosting --token 1/Zx2zBmtBKXJkZggSqivs-ed8uKxCzLDJlc6QV3qVPzY

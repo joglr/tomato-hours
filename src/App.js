@@ -11,15 +11,15 @@ import DefaultView from './views/DefaultView'
 import './theme'
 
 initialize(firebase)({
-  apiKey: "AIzaSyBxAilPu1Y20NfJToW--lr5EHMzw-SflGM",
-  authDomain: "time-tracker-925f3.firebaseapp.com",
-  databaseURL: "https://time-tracker-925f3.firebaseio.com",
-  projectId: "time-tracker-925f3",
-  storageBucket: "time-tracker-925f3.appspot.com",
-  messagingSenderId: "595777818732"
+  apiKey: "AIzaSyAVovUeo7qr98wOonwLLMfsp2je2TLrjdQ",
+  authDomain: "tomato-hours.firebaseapp.com",
+  databaseURL: "https://tomato-hours.firebaseio.com",
+  projectId: "tomato-hours",
+  storageBucket: "tomato-hours.appspot.com",
+  messagingSenderId: "80139089413"
 })
 
-const appTitle = "Work Hour Tracker"
+const appTitle = "Tomato Hours"
 
 const App = createClass({
   getInitialState: () => ({ user: null }),

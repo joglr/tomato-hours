@@ -1,5 +1,5 @@
 {
-  "name": "time-tracker",
+  "name": "tomato-hours",
   "version": "0.1.3",
   "private": true,
   "dependencies": {
@@ -31,6 +31,6 @@
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://jonasroessum@bitbucket.org/jonasroessum/time-tracker.git"
+    "url": "https://jonasroessum@bitbucket.org/jonasroessum/tomato-hours.git"
   }
 }
