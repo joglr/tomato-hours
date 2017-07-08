@@ -53,5 +53,9 @@
 	"settings": {
 		"scalingAlgorithm": "Mitchell",
 		"errorOnImageTooSmall": false
+	},
+	"versioning": {
+		"paramName": "v",
+		"paramValue": "rM3krp5a3p"
 	}
 }
