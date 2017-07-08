@@ -8,7 +8,9 @@ image: node:6.9.4
 pipelines:
   default:
     - step:
-        script: # Modify the commands below to build your repository.
+        caches:
+          - node
+        script:
           - npm install
           - npm install firebase-tools cli-real-favicon -g
           - real-favicon check-for-update --fail-on-update faviconData.json
