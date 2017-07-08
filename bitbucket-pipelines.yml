@@ -11,6 +11,7 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - npm install
           - npm install firebase-tools cli-real-favicon -g
+          - real-favicon check-for-update --fail-on-update faviconData.json
           - npm run build
           - firebase use tomato-hours
           - firebase deploy --only hosting --token 1/Zx2zBmtBKXJkZggSqivs-ed8uKxCzLDJlc6QV3qVPzY
