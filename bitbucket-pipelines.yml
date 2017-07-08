@@ -10,7 +10,7 @@ pipelines:
     - step:
         script: # Modify the commands below to build your repository.
           - npm install
-          - npm install firebase-tools -g
+          - npm install firebase-tools cli-real-favicon -g
           - npm run build
           - firebase use tomato-hours
           - firebase deploy --only hosting --token 1/Zx2zBmtBKXJkZggSqivs-ed8uKxCzLDJlc6QV3qVPzY
