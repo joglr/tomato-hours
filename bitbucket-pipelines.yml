@@ -15,4 +15,4 @@ pipelines:
           - npm install firebase-tools cli-real-favicon -g
           - real-favicon check-for-update --fail-on-update faviconData.json
           - npm run build
-          - firebase deploy --only hosting --token 1/Zx2zBmtBKXJkZggSqivs-ed8uKxCzLDJlc6QV3qVPzY
+          - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --only hosting --non-interactive --token $FIREBASE_DEPLOY_KEY
