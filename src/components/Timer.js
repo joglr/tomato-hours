@@ -34,7 +34,7 @@ const getFormattedTime = function (ellapsedTime) {
     .join(' ')
 }
 
-const timerStoppedCallback = () => false
+const timerStoppedCallback = _ => _
 
 const Timer = createClass({
   getDefaultProps: () => ({ timerStoppedCallback }),
@@ -158,6 +158,9 @@ const Timer = createClass({
   }
 })
 
-Timer.propTypes = { tickCallback: PropTypes.func }
+Timer.propTypes = {
+  tickCallback: PropTypes.func,
+  timerStoppedCallback: PropTypes.func
+}
 
 export default Timer

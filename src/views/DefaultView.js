@@ -18,9 +18,12 @@ const DefaultView = createClass({
   onTimerUpdate: function (ellapsedTime) { this.setState({ ellapsedTime }) },
   render: function () {
     const { ellapsedTime, showEarnedSalary, hourlyRate } = this.state
+    const { timerStoppedCallback } = this.props
     return <div className="md-grid default-view">
       <div className="md-cell--4-phone md-cell--6-tablet md-cell--1-tablet-offset md-cell--6-desktop md-cell--3-desktop-offset">
-        <Timer tickCallback={ this.onTimerUpdate } />
+        <Timer
+          timerStoppedCallback={ timerStoppedCallback }
+          tickCallback={ this.onTimerUpdate } />
         { showEarnedSalary && ellapsedTime !== null
           ? <EarnedSalary
             ellapsedTime={ ellapsedTime }
