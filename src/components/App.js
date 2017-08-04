@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Timer from './../components/Timer'
 import SessionList from './../components/SessionList'
 import SettingsList from './SettingsList'
-import './TomatoHours.css'
+import './App.css'
 // const appTitle = "Tomato Hours"
 
 let App = () => (

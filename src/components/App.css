@@ -1,0 +1,9 @@
+.timer-button-wrap {
+  padding: 1em;
+}
+.app .md-btn {
+  width: 100%;
+}
+.app .time-display {
+  text-align: center;
+}
