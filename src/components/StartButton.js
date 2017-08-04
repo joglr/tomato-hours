@@ -1,31 +1,37 @@
 import React from 'react'
-import createClass from 'create-react-class'
+import { connect } from 'react-redux'
+import { toggleTimer } from './../actions'
 import Button from 'react-md/lib/Buttons/Button'
 
-const StartButton = createClass({
-  getDefaultProps: () => ({
-    onButtonClick: () => {}
-  }),
-  render: function () {
-    const propsToAdd = {
-      label: this.props.active
-        ? 'Stop'
-        : 'Start'
-    }
-    propsToAdd[this.props.active
-      ? 'secondary'
-      : 'primary'
-    ] = true
-    const icon = this.props.active
-      ? 'timer_off'
-      : 'timer'
-    return <Button
-      raised
-      { ...propsToAdd }
-      tooltipLabel={ `${propsToAdd.label} timer`  }
-      tooltipDelay={ 200 }
-      onClick={ this.props.onButtonClick }>{ icon }</Button>
+let StartButton = ({ active, onButtonClick }) => {
+  const propsToAdd = {
+    label: active
+      ? 'End'
+      : 'Begin'
   }
+  propsToAdd[active
+    ? 'secondary'
+    : 'primary'
+  ] = true
+  const icon = active
+    ? 'timer_off'
+    : 'timer'
+  return <Button
+    raised
+    { ...propsToAdd }
+    tooltipLabel={ `${propsToAdd.label} timer`  }
+    tooltipDelay={ 200 }
+    onClick={ onButtonClick }>{ icon }</Button>
+}
+
+const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({
+  active: startTime !== null,
 })
+
+const mapDispatchToProps = (dispatch) => ({
+  onButtonClick: () => dispatch(toggleTimer())
+})
+
+StartButton = connect(mapStateToProps, mapDispatchToProps)(StartButton)
 
 export default StartButton
