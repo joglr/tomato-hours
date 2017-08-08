@@ -13,7 +13,7 @@ import FontIcon from 'react-md/lib/FontIcons'
 const TimeIcon = () => <FontIcon>timer</FontIcon>
 const TrashIcon = () => <FontIcon>delete</FontIcon>
 
-let SessionList = ({ sessions }) => (
+let SessionsList = ({ sessions }) => (
   <List>
     <Subheader primaryText="Sessions" />
     { sessions.length > 0
@@ -37,6 +37,6 @@ const mapStateToProps = ({ timer: { sessions }}) => ({
   sessions
 })
 
-SessionList = connect(mapStateToProps)(SessionList)
+SessionsList = connect(mapStateToProps)(SessionsList)
 
-export default SessionList
+export default SessionsList
