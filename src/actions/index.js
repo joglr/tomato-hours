@@ -21,9 +21,18 @@ export const TOGGLE_REMEMBER_SETTINGS = 'REMEMBER_SETTINGS'
 
 // Action creators
 
-export const setShowEarnedSalary = value => ({ type: TOGGLE_EARNED_SALARY_VISIBILITY, value })
-export const setHourlyRate = value => ({ type: SET_HOURLY_RATE, value })
-export const setRememberSettings = value => ({ type: TOGGLE_REMEMBER_SETTINGS, value })
+export const setShowEarnedSalary = value => ({
+  type: TOGGLE_EARNED_SALARY_VISIBILITY,
+  value
+})
+export const setHourlyRate = value => ({
+  type: SET_HOURLY_RATE,
+  value
+})
+export const setRememberSettings = value => ({
+  type: TOGGLE_REMEMBER_SETTINGS,
+  value
+})
 
 export const settingToggleActionCreators = {
   setShowEarnedSalary,
