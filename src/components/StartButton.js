@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleTimer } from './../actions'
+import { startTimer, stopTimer } from './../actions'
 import Button from 'react-md/lib/Buttons/Button'
 
 let StartButton = ({ active, onButtonClick }) => {
@@ -21,15 +21,17 @@ let StartButton = ({ active, onButtonClick }) => {
     { ...propsToAdd }
     tooltipLabel={ `${propsToAdd.label} timer`  }
     tooltipDelay={ 200 }
-    onClick={ onButtonClick }>{ icon }</Button>
+    onClick={ onButtonClick({ active }) }>{ icon }</Button>
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({
-  active: startTime !== null,
-})
+const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({ active: startTime !== null, })
 
 const mapDispatchToProps = (dispatch) => ({
-  onButtonClick: () => dispatch(toggleTimer())
+  onButtonClick: ({ active }) => () => {
+    active 
+      ? dispatch(stopTimer())
+      : dispatch(startTimer())
+  }
 })
 
 StartButton = connect(mapStateToProps, mapDispatchToProps)(StartButton)
