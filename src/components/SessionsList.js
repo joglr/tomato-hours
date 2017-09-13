@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import calculateEllapsedTime from './../calculate-ellapsed-time'
+import getEllapsedTime from './../get-ellapsed-time'
 import formatTime from './../format-time'
 import byStartTime from './../by-start-time'
 import List from 'react-md/lib/Lists/List'
@@ -26,7 +26,7 @@ let SessionsList = ({ sessions }) => (
           primaryText={title && title.length === 0 ? "Untitled" : title }
           secondaryText={[ startTime && startTime.constructor === Date
             ? moment(startTime.getTime()).format('lll')
-            : "Never", formatTime(calculateEllapsedTime(startTime, stopTime))].join(', ')} />
+            : "Never", formatTime(getEllapsedTime(startTime, stopTime))].join(', ')} />
       ])
       : <ListItem primaryText="No sessions yet" disabled={true} style={{ textAlign: "center" }}/>
     }

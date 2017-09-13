@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import formatTime from './../format-time'
-import calculateEllapsedTime from './../calculate-ellapsed-time'
+import getEllapsedTime from './../get-ellapsed-time'
 import EarnedSalary from './../components/EarnedSalary'
 
 let TimeDisplay = ({ showEarnedSalary, hourlyRate, startTime }) => (
   <div>
-    <h1 className="time-display">{ startTime ? formatTime(calculateEllapsedTime(startTime, new Date())) : "0s"}</h1>
+    <h1 className="time-display">{ startTime ? formatTime(getEllapsedTime(startTime, new Date())) : "0s"}</h1>
     { showEarnedSalary && hourlyRate && startTime
       ? <EarnedSalary />
       : [] }
