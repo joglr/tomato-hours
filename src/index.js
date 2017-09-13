@@ -2,6 +2,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import timerMiddleware from 'redux-timer-middleware'
+import logger from './logger'
+import crashReporter from './crash-reporter'
 import { Provider } from 'react-redux'
 import firebase from 'firebase'
 import tomatoHours from './reducers'
@@ -23,7 +25,10 @@ initialize(firebase)({
   messagingSenderId: "80139089413"
 })
 
-const store = createStore(tomatoHours, applyMiddleware(timerMiddleware))
+const store = createStore(
+  tomatoHours, 
+  applyMiddleware(crashReporter, logger, timerMiddleware)
+)
 // onAuthStateChanged(user) {
   //   if (!user) signInWithRedirect(firebase)()
   //   else {
