@@ -12,7 +12,7 @@ const mapStateToProps = ({
   timer: { currentSession: { ellapsedTime } },
   settings: { hourlyRate }
 }) => ({
-  earnedSalary: Math.round(ellapsedTime / 3600 * hourlyRate || 0)
+  earnedSalary: Math.ceil(ellapsedTime / 3600 * hourlyRate || 0)
 })
 
 EarnedSalary = connect(mapStateToProps)(EarnedSalary)
