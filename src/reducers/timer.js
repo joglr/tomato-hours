@@ -37,13 +37,13 @@ export default (state = defaultTimer, action) => {
         ...state,
         currentSession: defaultTimer.currentSession,
         sessions: [
-          ...state.sessions,
           {
             ...state.currentSession,
             ellapsedTime: getEllapsedTime(state.currentSession.startTime, new Date()),
             title: state.currentSession.title,
             stopTime: new Date()
-          }
+          },
+          ...state.sessions
         ]
       }
     default:
