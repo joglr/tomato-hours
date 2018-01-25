@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startTimer, stopTimer } from './../actions'
+import { startTimer, startTomatoTimer, stopTimer } from './../actions'
 import Button from 'react-md/lib/Buttons/Button'
 
 let StartButton = ({ active, onButtonClick }) => {
@@ -28,9 +28,12 @@ const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({ activ
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonClick: ({ active }) => () => {
-    active 
+    active
       ? dispatch(stopTimer())
-      : dispatch(startTimer())
+      : (
+        dispatch(startTomatoTimer()) &&
+        dispatch(startTimer())
+      )
   }
 })
 
