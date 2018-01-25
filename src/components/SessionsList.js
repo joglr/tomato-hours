@@ -23,7 +23,7 @@ let SessionsList = ({ sessions }) => (
           key={key}
           leftIcon={<TimeIcon />}
           rightIcon={<TrashIcon />}
-          primaryText={title && title.length === 0 ? "Untitled" : title }
+          primaryText={title.length === 0 ? "Untitled" : title }
           secondaryText={[ startTime && startTime.constructor === Date
             ? moment(startTime.getTime()).format('lll')
             : "Never", formatTime(getEllapsedTime(startTime, stopTime))].join(', ')} />
