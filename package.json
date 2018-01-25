@@ -18,13 +18,16 @@
     "roboto-fontface": "^0.8.0"
   },
   "devDependencies": {
+    "cross-env": "^5.1.3",
     "eslint-plugin-react": "^7.1.0",
     "react-scripts": "1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && npm run icon",
-    "test": "react-scripts test --env=jsdom --verbose",
+    "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
+    "deploy": "npm run test && npm run build && firebase deploy",
+    "test-watch": "react-scripts test --env=jsdom --verbose",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "icon": "real-favicon generate faviconDescription.json faviconData.json build/static/media && real-favicon inject faviconData.json build build/index.html"
