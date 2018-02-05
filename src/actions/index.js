@@ -1,4 +1,5 @@
 import { START_TIMER, STOP_TIMER } from 'redux-timer-middleware'
+export { START_TIMER, STOP_TIMER } from 'redux-timer-middleware'
 
 /*
  * Sessions
@@ -10,9 +11,11 @@ export const TIMER_END = 'TOMATO_TICK_END'
 
 // Other constants
 export const TIMER_NAME = 'TOMATO_TIMER'
+export const START_TOMATO_TIMER = 'START_TOMATO_TIMER'
 
 // Action creators
 export const startTimer = () => ({ type: START_TIMER, payload: { actionName: TICK, timerName: TIMER_NAME }})
+export const startTomatoTimer = () => ({ type: START_TOMATO_TIMER })
 export const stopTimer = () => ({ type: STOP_TIMER, payload: { timerName: TIMER_NAME }})
 
 /*

@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import getEllapsedTime from './../get-ellapsed-time'
 
 let EarnedSalary = ({ earnedSalary }) => {
   return <div style={{ padding: "1rem" }}>

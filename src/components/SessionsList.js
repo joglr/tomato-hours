@@ -17,13 +17,13 @@ let SessionsList = ({ sessions }) => (
   <List>
     <Subheader primaryText="Sessions" />
     { sessions.length > 0
-      ? sessions.sort(byStartTime()).map(({ title, startTime, stopTime }, key) => [
+      ? sessions.sort(byStartTime(true)).map(({ title, startTime, stopTime }, key) => [
         <Divider />,
         <ListItem
           key={key}
           leftIcon={<TimeIcon />}
           rightIcon={<TrashIcon />}
-          primaryText={title && title.length === 0 ? "Untitled" : title }
+          primaryText={title.length === 0 ? "Untitled" : title }
           secondaryText={[ startTime && startTime.constructor === Date
             ? moment(startTime.getTime()).format('lll')
             : "Never", formatTime(getEllapsedTime(startTime, stopTime))].join(', ')} />
