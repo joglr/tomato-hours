@@ -9,7 +9,6 @@ import crashReporter from './crash-reporter'
 import tomatoHours from './reducers'
 import App from './components/App'
 import './theme'
-// import './raven'
 import registerServiceWorker from './registerServiceWorker'
 
 import {
@@ -26,7 +25,7 @@ initialize(firebase)({
 })
 
 const store = createStore(
-  tomatoHours, 
+  tomatoHours,
   applyMiddleware(crashReporter, logger, timerMiddleware)
 )
 // onAuthStateChanged(user) {
@@ -46,13 +45,11 @@ const store = createStore(
         //   })
         // },
 
-// const unsubscribe =
-store.subscribe(() => console.log(store.getState().timer))
-
 render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 )
+
 registerServiceWorker()
