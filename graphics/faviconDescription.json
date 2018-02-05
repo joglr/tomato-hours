@@ -19,7 +19,7 @@
 		"windows": {
 			"masterPicture": "public/time-tracker-white.svg",
 			"pictureAspect": "noChange",
-			"backgroundColor": "#3f51b5",
+			"backgroundColor": "#f44336",
 			"onConflict": "override",
 			"assets": {
 				"windows80Ie10Tile": false,
@@ -33,7 +33,7 @@
 		},
 		"androidChrome": {
 			"pictureAspect": "noChange",
-			"themeColor": "#3f51b5",
+			"themeColor": "#f44336",
 			"manifest": {
 				"display": "standalone",
 				"orientation": "notSet",
@@ -47,7 +47,7 @@
 		},
 		"safariPinnedTab": {
 			"pictureAspect": "silhouette",
-			"themeColor": "#3f51b5"
+			"themeColor": "#f44336"
 		}
 	},
 	"settings": {
