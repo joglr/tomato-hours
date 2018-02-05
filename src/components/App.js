@@ -3,19 +3,29 @@ import { connect } from 'react-redux'
 import Timer from './../components/Timer'
 import SessionsList from './../components/SessionsList'
 import SettingsList from './SettingsList'
+import PreventAccidentalClosure from './PreventAccidentalClosure'
 import './App.css'
 // const appTitle = "Tomato Hours"
 
-let App = () => (
+let App = ({ active }) => (
   <div className="md-grid app">
     <div className="md-cell--4-phone md-cell--6-tablet md-cell--1-tablet-offset md-cell--6-desktop md-cell--3-desktop-offset">
       <Timer />
       <SessionsList />
       <SettingsList />
+      { active
+        ? <PreventAccidentalClosure {...{
+          addEventListener: window.addEventListener.bind(window),
+          removeEventListener: window.removeEventListener.bind(window),
+         }} />
+        : []
+      }
     </div>
   </div>
 )
 
-App = connect()(App)
+const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({ active: startTime !== null, })
+
+App = connect(mapStateToProps)(App)
 
 export default App
