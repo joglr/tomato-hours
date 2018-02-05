@@ -26,12 +26,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && npm run icon",
+    "serve-build": "npm run build && serve build",
     "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
     "deploy": "npm run test && npm run build && firebase deploy",
     "test-watch": "react-scripts test --env=jsdom --verbose",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
-    "icon": "real-favicon generate faviconDescription.json faviconData.json build/static/media && real-favicon inject faviconData.json build build/index.html"
+    "icon": "real-favicon generate ./graphics/faviconDescription.json ./graphics/faviconData.json build/static/media && real-favicon inject ./graphics/faviconData.json ./build ./build/index.html"
   },
   "peerDependencies": {
     "npm": "^5.0.0"
