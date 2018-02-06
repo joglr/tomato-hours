@@ -17,7 +17,7 @@ let SessionsList = ({ sessions }) => (
   <List>
     <Subheader primaryText="Sessions" />
     { sessions.length > 0
-      ? sessions.sort(byStartTime(true)).map(({ title, startTime, stopTime }, key) => [
+      ? sessions.sort(byStartTime()).map(({ title, startTime, stopTime }, key) => [
         <Divider />,
         <ListItem
           key={key}
