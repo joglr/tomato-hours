@@ -2,6 +2,7 @@
 
 import { Component } from 'react'
 import { connect } from 'react-redux'
+import supportsPassive from './../supports-passive'
 
 const event = "beforeunload"
 
@@ -13,7 +14,10 @@ class PreventAccidentalClosure extends Component {
   }
   componentWillMount() {
     const { addEventListener } = this.props
-    addEventListener(event, this.handleBeforeUnload)
+    addEventListener(event, this.handleBeforeUnload, supportsPassive
+      ? { passive: true }
+      : false
+    )
     console.log("bound %s", event)
   }
   componentWillUnmount() {

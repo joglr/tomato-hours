@@ -1,4 +1,5 @@
 import getEllapsedTime from './../get-ellapsed-time'
+import getTimeFromHoursAndMinutes from './../get-time-from-hours-and-minutes'
 import { TICK, START_TOMATO_TIMER, TIMER_END } from './../actions'
 
 export const defaultTimer = {
@@ -20,7 +21,7 @@ export default (state = defaultTimer, action) => {
           currentSession: {
             // Temporary method of inputing startTime
             startTime: window.location.hash.split('#').length === 2
-              ? new Date(Number(window.location.hash.split('#')[1]))
+              ? new Date(getTimeFromHoursAndMinutes(window.location.hash.split('#')[1]))
               : new Date(),
             stopTime: null,
             title: defaultTimer.currentSession.title,
