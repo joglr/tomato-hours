@@ -9,6 +9,7 @@ import './App.css'
 
 let App = ({ active }) => (
   <div className="md-grid app">
+    <title>Tomato Hours</title>
     <div className="md-cell--4-phone md-cell--6-tablet md-cell--1-tablet-offset md-cell--6-desktop md-cell--3-desktop-offset">
       <Timer />
       <SessionsList />
