@@ -1,4 +1,3 @@
-import jest2 from 'jest'
 import byStartTime from './by-start-time'
 
 const someDate = { startTime: new Date(1500000000000) }
