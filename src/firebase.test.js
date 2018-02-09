@@ -1,4 +1,3 @@
-import * as jest2 from 'jest'
 import {
   initialize,
 	signInWithRedirect,
