@@ -1,9 +1,11 @@
+//@ts-check
 import React from 'react'
 import { connect } from 'react-redux'
 import Timer from './../components/Timer'
 import SessionsList from './../components/SessionsList'
 import SettingsList from './SettingsList'
 import PreventAccidentalClosure from './PreventAccidentalClosure'
+import StoreDebug from './StoreDebug'
 import './App.css'
 // const appTitle = "Tomato Hours"
 
@@ -19,6 +21,10 @@ let App = ({ active }) => (
           addEventListener: window.addEventListener.bind(window),
           removeEventListener: window.removeEventListener.bind(window),
          }} />
+        : []
+      }
+      { process.env.NODE_ENV === 'development'
+        ? <StoreDebug />
         : []
       }
     </div>

@@ -1,6 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startTimer, startTomatoTimer, stopTimer } from './../actions'
+import {
+  startTimerMiddleware,
+  stopTimerMiddleware,
+  pauseSession,
+  unpauseSession,
+  endSession,
+} from './../actions'
 import Button from 'react-md/lib/Buttons/Button'
 
 let StartButton = ({ active, onButtonClick }) => {
@@ -24,15 +30,15 @@ let StartButton = ({ active, onButtonClick }) => {
     onClick={ onButtonClick({ active }) }>{ icon }</Button>
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime }}}) => ({ active: startTime !== null, })
+const mapStateToProps = ({ timer: { currentSession: { startTime }, sessionParts }}) => ({ active: startTime !== null || sessionParts.length > 0 })
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonClick: ({ active }) => () => {
     active
-      ? dispatch(stopTimer())
+      ? dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
       : (
-        dispatch(startTomatoTimer()) &&
-        dispatch(startTimer())
+        dispatch(unpauseSession()) &&
+        dispatch(startTimerMiddleware())
       )
   }
 })

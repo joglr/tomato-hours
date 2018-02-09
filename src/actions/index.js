@@ -1,23 +1,28 @@
 import { START_TIMER, STOP_TIMER } from 'redux-timer-middleware'
-export { START_TIMER, STOP_TIMER } from 'redux-timer-middleware'
 
 /*
- * Sessions
- */
+* Sessions
+*/
 
 // Action types
-export const TICK = 'TOMATO_TICK'
-export const TIMER_END = 'TOMATO_TICK_END'
+export const START_TIMER_MIDDLEWARE = START_TIMER
+export const STOP_TIMER_MIDDLEWARE = STOP_TIMER
+export const SESSION_TICK = 'SESSION_TICK'
+
+export const PAUSE_SESSION = 'SESSION_TICK_END'
+export const UNPAUSE_SESSION = 'UNPAUSE_SESSION'
+export const END_SESSION = 'END_SESSION'
 
 // Other constants
 export const TIMER_NAME = 'TOMATO_TIMER'
 export const START_TOMATO_TIMER = 'START_TOMATO_TIMER'
 
 // Action creators
-export const startTimer = () => ({ type: START_TIMER, payload: { actionName: TICK, timerName: TIMER_NAME }})
-export const startTomatoTimer = () => ({ type: START_TOMATO_TIMER })
-export const stopTimer = () => ({ type: STOP_TIMER, payload: { timerName: TIMER_NAME }})
-
+export const startTimerMiddleware = () => ({ type: START_TIMER_MIDDLEWARE, payload: { actionName: SESSION_TICK, timerName: TIMER_NAME }})
+export const stopTimerMiddleware = () => ({ type: STOP_TIMER_MIDDLEWARE, payload: { timerName: TIMER_NAME }})
+export const pauseSession = () => ({ type: PAUSE_SESSION })
+export const unpauseSession = () => ({ type: UNPAUSE_SESSION })
+export const endSession = () => ({ type: END_SESSION })
 /*
  * Settings
  */
