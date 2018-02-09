@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import jest2 from 'jest'
 import Timer from './Timer'
 import { Provider } from 'react-redux'
 import fakeStore from './../fake-store'
