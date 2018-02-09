@@ -35,6 +35,8 @@
 			"pictureAspect": "noChange",
 			"themeColor": "#f44336",
 			"manifest": {
+				"name": "Tomato Hours",
+				"startUrl": "/",
 				"display": "standalone",
 				"orientation": "notSet",
 				"onConflict": "override",
