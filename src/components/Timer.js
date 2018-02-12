@@ -15,9 +15,7 @@ let Timer = () => (
       </div>
       <div className="md-cell--4-phone md-cell--4-tablet md-cell--6-desktop">
         <div className="timer-button-wrap">
-          <PauseButton
-          disabled={ true }
-          paused={ false } />
+          <PauseButton />
         </div>
       </div>
     </div>

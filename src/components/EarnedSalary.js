@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import calculateEarnedSalary from './../calculate-earned-salary'
 
 let EarnedSalary = ({ earnedSalary }) => {
   return <div style={{ padding: "1rem" }}>
@@ -11,7 +12,7 @@ const mapStateToProps = ({
   timer: { currentSession: { ellapsedTime } },
   settings: { hourlyRate }
 }) => ({
-  earnedSalary: Math.ceil(ellapsedTime / 3600 * hourlyRate || 0)
+  earnedSalary: calculateEarnedSalary({ ellapsedTime, hourlyRate })
 })
 
 EarnedSalary = connect(mapStateToProps)(EarnedSalary)

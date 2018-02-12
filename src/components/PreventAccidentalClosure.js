@@ -18,12 +18,10 @@ class PreventAccidentalClosure extends Component {
       ? { passive: true }
       : false
     )
-    console.log("bound %s", event)
   }
   componentWillUnmount() {
     const { removeEventListener } = this.props
     removeEventListener(event, this.handleBeforeUnload)
-    console.log("unbound %s", event)
   }
   render() {
     return null
