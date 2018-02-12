@@ -22,6 +22,7 @@
     "cli-real-favicon": "0.0.6",
     "cross-env": "^5.1.3",
     "eslint-plugin-react": "^7.1.0",
+    "firebase-tools": "^3.17.4",
     "npx": "^9.7.1",
     "react-scripts": "1.0.10",
     "rimraf": "^2.6.2"
