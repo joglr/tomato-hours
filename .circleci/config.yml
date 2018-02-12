@@ -106,4 +106,4 @@ workflows:
             - build
           filters:
             branches:
-              only: build
+              only: master
