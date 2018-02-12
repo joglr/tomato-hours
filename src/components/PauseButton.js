@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
   onButtonClick: ({ paused }) => () => {
     paused
       ? dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
-      : (dispatch(pauseSession()) && dispatch(stopTimerMiddleware()))
+      : dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
   }
 })
 
