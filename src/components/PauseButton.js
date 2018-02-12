@@ -3,9 +3,10 @@ import React from 'react'
 import Button from 'react-md/lib/Buttons/Button'
 import { connect } from 'react-redux'
 import {
+  startTimerMiddleware,
+  stopTimerMiddleware,
   pauseSession,
-  unpauseSession,
-  stopTimerMiddleware
+  unpauseSession
 } from './../actions'
 
 let PauseButton = ({ active, paused, disabled, onButtonClick }) => {
@@ -31,16 +32,16 @@ let PauseButton = ({ active, paused, disabled, onButtonClick }) => {
     onClick={ onButtonClick({ paused }) }>{ icon }</Button>
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime }, sessionParts }}) => ({
+const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({
   active: startTime !== null,
-  paused: startTime === null && sessionParts.length > 0,
-  disabled: startTime === null && sessionParts.length === 0
+  paused: startTime === null && parts.length > 0,
+  disabled: startTime === null && parts.length === 0
 })
 
 const mapDispatchToProps = dispatch => ({
   onButtonClick: ({ paused }) => () => {
     paused
-      ? dispatch(unpauseSession())
+      ? dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
       : (dispatch(pauseSession()) && dispatch(stopTimerMiddleware()))
   }
 })

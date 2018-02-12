@@ -30,12 +30,12 @@ let StartButton = ({ active, onButtonClick }) => {
     onClick={ onButtonClick({ active }) }>{ icon }</Button>
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime }, sessionParts }}) => ({ active: startTime !== null || sessionParts.length > 0 })
+const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({ active: startTime !== null || parts.length > 0 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onButtonClick: ({ active }) => () => {
     active
-      ? dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
+      ? dispatch(pauseSession()) && dispatch(endSession()) && dispatch(stopTimerMiddleware())
       : (
         dispatch(unpauseSession()) &&
         dispatch(startTimerMiddleware())
