@@ -22,7 +22,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -31,7 +31,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       # run tests!
       - run: npm test
@@ -54,7 +54,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -63,7 +63,7 @@ jobs:
           paths:
             - build
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
   deploy:
     docker:
@@ -83,14 +83,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "package-lock.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       # run tests!
-      - run: npx real-favicon check-for-update --fail-on-update ./graphicsfaviconData.json
+      - run: npm run check-icon-update
       - run: npm run build
-      - run: npx firebase deploy -m "Branch $CIRCLE_BRANCH, build $CIRCLE_SHA1" --only hosting --non-interactive --token $FIREBASE_DEPLOY_KEY
+      - run: npm run deploy-ci
 
 workflows:
   version: 2
