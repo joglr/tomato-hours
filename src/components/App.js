@@ -41,10 +41,10 @@ let App = ({ active, ellapsedTime, showEarnedSalary, hourlyRate }) => {
   )
 }
 const mapStateToProps = ({
-  timer: { currentSession: { startTime, parts, ellapsedTime }},
+  timer: { currentSession: { startTime, parts, ellapsedTime }, sessions },
   settings: { showEarnedSalary, hourlyRate }
 }) => ({
-  active: startTime !== null || parts.length > 0,
+  active: startTime !== null || parts.length > 0 || sessions.length > 0,
   ellapsedTime,
   showEarnedSalary,
   hourlyRate
