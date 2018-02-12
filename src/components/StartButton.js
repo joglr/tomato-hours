@@ -12,8 +12,8 @@ import Button from 'react-md/lib/Buttons/Button'
 let StartButton = ({ active, onButtonClick }) => {
   const propsToAdd = {
     label: active
-      ? 'End'
-      : 'Begin'
+      ? 'End session'
+      : 'Begin session'
   }
   propsToAdd[active
     ? 'secondary'
