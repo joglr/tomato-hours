@@ -13,7 +13,7 @@ let PauseButton = ({ active, paused, disabled, onButtonClick }) => {
   const propsToAdd = {
     label: !paused
       ? 'Pause session'
-      : 'Continue sessions',
+      : 'Continue session',
     disabled
   }
   propsToAdd[paused
