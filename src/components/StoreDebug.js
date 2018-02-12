@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 
 let StoreDebug = ({ store }) => {
   return <code><pre style={{
-    fontFamily: 'Consolas'
+    fontFamily: 'Consolas',
+    fontSize: "10px"
   }}>
-    { JSON.stringify(store, null, ".")}
+    { JSON.stringify(store, null, 1)}
   </pre></code>
 }
 
