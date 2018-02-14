@@ -14,11 +14,11 @@ let PauseButton = ({
   disabled,
   onButtonClick
 }) => <ToggleButton
-    primaryIcon={'play_arrow'}
-    secondaryIcon={'pause'}
-    primaryLabel={'Continue session'}
-    secondaryLabel={'Pause session'}
-    condition={paused}
+    primaryIcon={'pause'}
+    secondaryIcon={'play_arrow'}
+    primaryLabel={'Pause session'}
+    secondaryLabel={'Continue session'}
+    condition={!paused}
     disabled={disabled}
     onButtonClick={onButtonClick}
     ></ToggleButton>
@@ -31,8 +31,8 @@ const mapStateToProps = ({ sessions: { currentSession: { startTime, parts } }}) 
 const mapDispatchToProps = dispatch => ({
   onButtonClick: ({ condition }) => () => {
     condition
-      ? dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
-      : dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
+      ? dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
+      : dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
   }
 })
 

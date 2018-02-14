@@ -11,6 +11,10 @@ const ToggleButton = ({
   onButtonClick
 }) => <Button
   floating
+  { ...condition
+    ? { primary: true }
+    : { secondary: true }
+  }
   tooltipLabel={ condition
     ? primaryLabel
     : secondaryLabel  }
