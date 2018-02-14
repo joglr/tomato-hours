@@ -12,12 +12,24 @@ export const defaultSettings = {
 
 export default (state = defaultSettings, action) => {
   switch (action.type) {
-    case TOGGLE_EARNED_SALARY_VISIBILITY:
-      return Object.assign({}, state, { showEarnedSalary: action.value })
-    case SET_HOURLY_RATE:
-      return Object.assign({}, state, { hourlyRate: Number(action.value) })
-    case TOGGLE_REMEMBER_SETTINGS:
-      return Object.assign({}, state, { rememberSettings: action.value })
+    case TOGGLE_EARNED_SALARY_VISIBILITY: {
+      return {
+        ...state,
+        showEarnedSalary: action.payload.value
+      }
+    }
+    case SET_HOURLY_RATE: {
+      return {
+        ...state,
+        hourlyRate: Number(action.payload.value)
+      }
+    }
+    case TOGGLE_REMEMBER_SETTINGS: {
+      return {
+        ...state,
+        rememberSettings: action.payload.value
+      }
+    }
     default:
       return state
   }
