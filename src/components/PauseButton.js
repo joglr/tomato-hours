@@ -1,6 +1,6 @@
 //@ts-check
 import React from 'react'
-import Button from 'react-md/lib/Buttons/Button'
+import ToggleButton from './ToggleButton'
 import { connect } from 'react-redux'
 import {
   startTimerMiddleware,
@@ -9,38 +9,28 @@ import {
   unpauseSession
 } from './../actions'
 
-let PauseButton = ({ active, paused, disabled, onButtonClick }) => {
-  const propsToAdd = {
-    label: !paused
-      ? 'Pause session'
-      : 'Continue session',
-    disabled
-  }
-  propsToAdd[paused
-    ? 'raised'
-    : 'flat'
-  ] = true
-  const icon = paused
-    ? 'play_arrow'
-    : 'pause'
-
-  return <Button
-    { ...propsToAdd }
-    tooltipLabel={ `${propsToAdd.label} timer`  }
-    tooltipDelay={ 200 }
-    primary
-    onClick={ onButtonClick({ paused }) }>{ icon }</Button>
-}
+let PauseButton = ({
+  paused,
+  disabled,
+  onButtonClick
+}) => <ToggleButton
+    primaryIcon={'play_arrow'}
+    secondaryIcon={'pause'}
+    primaryLabel={'Continue session'}
+    secondaryLabel={'Pause session'}
+    condition={paused}
+    disabled={disabled}
+    onButtonClick={onButtonClick}
+    ></ToggleButton>
 
 const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({
-  active: startTime !== null,
   paused: startTime === null && parts.length > 0,
   disabled: startTime === null && parts.length === 0
 })
 
 const mapDispatchToProps = dispatch => ({
-  onButtonClick: ({ paused }) => () => {
-    paused
+  onButtonClick: ({ condition }) => () => {
+    condition
       ? dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
       : dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
   }

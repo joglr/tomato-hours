@@ -7,34 +7,28 @@ import {
   unpauseSession,
   endSession,
 } from './../actions'
-import Button from 'react-md/lib/Buttons/Button'
+import ToggleButton from './ToggleButton'
 
 let StartButton = ({ active, onButtonClick }) => {
-  const propsToAdd = {
-    label: active
-      ? 'End session'
-      : 'Begin session'
-  }
-  propsToAdd[active
-    ? 'secondary'
-    : 'primary'
-  ] = true
-  const icon = active
-    ? 'timer_off'
-    : 'timer'
-  return <Button
-    raised
-    { ...propsToAdd }
-    tooltipLabel={ `${propsToAdd.label} timer`  }
-    tooltipDelay={ 200 }
-    onClick={ onButtonClick({ active }) }>{ icon }</Button>
+  return <ToggleButton
+  primaryIcon={'timer_off'}
+  secondaryIcon={'timer'}
+  primaryLabel={'End session'}
+  secondaryLabel={'Begin session'}
+  condition={active}
+  onButtonClick={onButtonClick}
+  ></ToggleButton>
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({ active: startTime !== null || parts.length > 0 })
+const mapStateToProps = ({
+  timer: { currentSession: { startTime, parts } }
+}) => ({
+  active: startTime !== null || parts.length > 0
+})
 
 const mapDispatchToProps = dispatch => ({
-  onButtonClick: ({ active }) => () => {
-    active
+  onButtonClick: ({ condition }) => () => {
+    condition
       ? dispatch(pauseSession()) && dispatch(endSession()) && dispatch(stopTimerMiddleware())
       : dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
   }
