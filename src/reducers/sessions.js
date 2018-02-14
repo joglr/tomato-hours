@@ -9,7 +9,7 @@ import {
   DELETE_SESSION
 } from './../actions'
 
-export const defaultTimer = {
+export const defaultSession = {
   currentSession: {
     title: "",
     startTime: null,
@@ -19,25 +19,25 @@ export const defaultTimer = {
   sessions: [],
 }
 
-export default (state = defaultTimer, action) => {
-  switch (action.type) {
-    // Should add a new part to the current session with a startTime: new Date()
+export default (state = defaultSession, { type, payload }) => {
+  switch (type) {
+    // adds a new part to the current session with a startTime: new Date()
     case SET_SESSION_TITLE: {
       return {
         ...state,
         currentSession: {
           ...state.currentSession,
-          title: action.payload.value
+          title: payload.value
         }
       }
     }
-    // Should reset currentSession and move startTime to a new sessionPart with a stopTime
+    // resets currentSession and move startTime to a new sessionPart with a stopTime
     case PAUSE_SESSION: {
       return {
         ...state,
         // Reset currenSession to default
         currentSession: {
-          ...defaultTimer.currentSession,
+          ...defaultSession.currentSession,
           title: state.currentSession.title,
           // Temporarily display current ellapsedTime until a new one is calculated
           ellapsedTime: state.currentSession.ellapsedTime,
@@ -56,6 +56,7 @@ export default (state = defaultTimer, action) => {
         },
       }
     }
+    // unpauses currentSession or starts a new one
     case UNPAUSE_SESSION: {// AKA START_SESSION
       const startTime = state.currentSession.parts.length === 0 && state.sessions.length === 0
       ? window.location.hash.split('#').length === 2
@@ -73,6 +74,7 @@ export default (state = defaultTimer, action) => {
         }
       }
     }
+    // updates the ellapsedTime
     case SESSION_TICK: {
       return {
         ...state,
@@ -89,12 +91,12 @@ export default (state = defaultTimer, action) => {
         }
       }
     }
-    // Should move the currentSession to a new a new session entry
+    // moves the currentSession to a new a new session entry
     case END_SESSION: {
       return {
         ...state,
-        ...defaultTimer,
-        currentSession: defaultTimer.currentSession,
+        ...defaultSession,
+        currentSession: defaultSession.currentSession,
         sessions: [
           ...state.sessions,
           {
@@ -104,10 +106,14 @@ export default (state = defaultTimer, action) => {
         ]
       }
     }
+    // deletes the requested session
     case DELETE_SESSION: {
       return {
         ...state,
-        sessions: state.sessions.filter((session, key) => key !== action.value)
+        sessions: state.sessions.filter((session, key) => {
+          debugger
+          return key !== payload.value
+        })
       }
     }
     default: {

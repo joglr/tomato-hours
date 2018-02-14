@@ -1,33 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import reduceEllapsedTime from './../reduce-ellapsed-time'
-import formatTime from './../format-time'
-import byStartTime from './../by-start-time'
 import List from 'react-md/lib/Lists/List'
 import Subheader from 'react-md/lib/Subheaders'
 import ListItem from 'react-md/lib/Lists/ListItem'
 import FontIcon from 'react-md/lib/FontIcons'
 import Avatar from 'react-md/lib/Avatars/Avatar'
+import { deleteSession } from './../actions'
+import reduceEllapsedTime from './../reduce-ellapsed-time'
+import formatTime from './../format-time'
+import byStartTime from './../by-start-time'
 
-const TrashIcon = () => <FontIcon>delete</FontIcon>
-
-let SessionsList = ({ sessions }) => (
+let SessionsList = ({ sessions, onDelete }) => (
   <List>
     <Subheader primaryText="Sessions" />
     { sessions.length > 0
       ? sessions
         .sort(byStartTime())
-        .map(({
-          title,
-          startTime,
-          stopTime,
-          parts
-        }, key) => <ListItem
+        .map(({ title, startTime, stopTime, parts }, key) => <ListItem
           threeLines
-          key={key}
-          rightIcon={<TrashIcon />}
-          leftAvatar={<Avatar suffix="red">{
+          { ... { key }}
+          rightIcon={<FontIcon onClick={onDelete(key)}>delete</FontIcon>}
+          leftAvatar={<Avatar suffix="teal">{
             title.length > 0
               ? title.slice(0, 1).toUpperCase()
               : "U"
@@ -52,8 +46,12 @@ let SessionsList = ({ sessions }) => (
   </List>
 )
 
-const mapStateToProps = ({ timer: { sessions }}) => ({
+const mapStateToProps = ({ sessions: { sessions }}) => ({
   sessions
 })
 
-export default connect(mapStateToProps)(SessionsList)
+const mapDispatchToProps = dispatch => ({
+  onDelete: key => () => dispatch(deleteSession(key))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionsList)
