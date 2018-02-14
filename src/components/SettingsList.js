@@ -31,10 +31,11 @@ let SettingsList = ({ onSettingChange, settings  }) => (
         </div>
       : []
     }
-    <Setting
+    { /* Redisplay when remember settings is working */ }
+    {/*<Setting
       label="Remember settings"
       value={settings.rememberSettings}
-      onChange={ value => onSettingChange("setRememberSettings", value )} />
+    onChange={ value => onSettingChange("setRememberSettings", value )} /> */ }
   </List>
 )
 
@@ -43,11 +44,11 @@ SettingsList.propTypes = {
   settings: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   settings: state.settings
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   onSettingChange: (setting, value) => dispatch(settingToggleActionCreators[setting](value))
 })
 
