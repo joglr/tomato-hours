@@ -23,7 +23,7 @@ let PauseButton = ({
     onButtonClick={onButtonClick}
     ></ToggleButton>
 
-const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({
+const mapStateToProps = ({ sessions: { currentSession: { startTime, parts } }}) => ({
   paused: startTime === null && parts.length > 0,
   disabled: startTime === null && parts.length === 0
 })

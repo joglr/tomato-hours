@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 import settings from './settings'
-import timer from './timer'
+import sessions from './sessions'
 
-export default combineReducers({ timer, settings })
+export default combineReducers({ sessions, settings })

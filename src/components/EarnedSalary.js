@@ -12,7 +12,7 @@ let EarnedSalary = ({ earnedSalary }) => {
 }
 
 const mapStateToProps = ({
-  timer: { currentSession: { ellapsedTime } },
+  sessions: { currentSession: { ellapsedTime } },
   settings: { hourlyRate }
 }) => ({
   earnedSalary: calculateEarnedSalary({ ellapsedTime, hourlyRate })

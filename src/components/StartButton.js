@@ -21,7 +21,7 @@ let StartButton = ({ active, onButtonClick }) => {
 }
 
 const mapStateToProps = ({
-  timer: { currentSession: { startTime, parts } }
+  sessions: { currentSession: { startTime, parts } }
 }) => ({
   active: startTime !== null || parts.length > 0
 })

@@ -13,7 +13,7 @@ let TimeDisplay = ({ showEarnedSalary, hourlyRate, ellapsedTime }) => (
 )
 
 const mapStateToProps = ({
-  timer: { currentSession: { ellapsedTime } },
+  sessions: { currentSession: { ellapsedTime } },
   settings: { showEarnedSalary, hourlyRate }
 }) => {
   return { showEarnedSalary, hourlyRate, ellapsedTime }

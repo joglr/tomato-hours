@@ -5,7 +5,8 @@ import {
   PAUSE_SESSION,
   UNPAUSE_SESSION,
   END_SESSION,
-  SET_SESSION_TITLE
+  SET_SESSION_TITLE,
+  DELETE_SESSION
 } from './../actions'
 
 export const defaultTimer = {
@@ -101,6 +102,12 @@ export default (state = defaultTimer, action) => {
             title: state.currentSession.title.trim()
           }
         ]
+      }
+    }
+    case DELETE_SESSION: {
+      return {
+        ...state,
+        sessions: state.sessions.filter((session, key) => key !== action.value)
       }
     }
     default: {

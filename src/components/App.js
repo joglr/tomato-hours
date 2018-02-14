@@ -61,7 +61,7 @@ class App extends Component {
 }
 
 const mapStateToProps = ({
-  timer: { currentSession: { startTime, parts, ellapsedTime }, sessions },
+  sessions: { currentSession: { startTime, parts, ellapsedTime }, sessions },
   settings: { showEarnedSalary, hourlyRate }
 }) => ({
   active: startTime !== null || parts.length > 0 || sessions.length > 0,
