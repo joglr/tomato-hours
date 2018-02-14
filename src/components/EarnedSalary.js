@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import calculateEarnedSalary from './../calculate-earned-salary'
 
 let EarnedSalary = ({ earnedSalary }) => {
-  return <div style={{ padding: "1rem" }}>
+  return <div style={{
+    padding: "1rem",
+    textAlign: "center"
+  }}>
     Earned salary: <span style={{ fontWeight: "bold" }}>{ earnedSalary }</span>
   </div>
 }
