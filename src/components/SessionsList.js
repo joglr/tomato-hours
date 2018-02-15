@@ -12,46 +12,47 @@ import formatTime from './../format-time'
 import byStartTime from './../by-start-time'
 
 let SessionsList = ({ sessions, onDelete }) => (
-  <List>
-    <Subheader primaryText="Sessions" />
-    { sessions.length > 0
-      ? sessions
-        .sort(byStartTime())
-        .map(({ title, startTime, stopTime, parts }, key) => <ListItem
-          threeLines
-          { ... { key }}
-          rightIcon={<FontIcon onClick={onDelete(key)}>delete</FontIcon>}
-          leftAvatar={<Avatar suffix="teal">{
-            title.length > 0
-              ? title.slice(0, 1).toUpperCase()
-              : "U"
-          }</Avatar>}
-          primaryText={title.length === 0 ? "Untitled" : title }
-          secondaryText={[
-            parts && parts[0] && parts[0].startTime && parts[0].startTime.constructor === Date
-              ? moment(parts[0].startTime.getTime()).format('lll')
-              : "Never",
-            formatTime(reduceEllapsedTime(parts))
-            ].join("\n")
-          } />
-      )
-      : <ListItem
-        primaryText="No sessions yet. Why not start one?"
-        disabled={true}
-        style={{
-          textAlign: "center",
-          fontWeight: "bold"
-        }} />
-    }
-  </List>
+	<List>
+		<Subheader primaryText="Sessions" />
+		{sessions.length > 0 ? (
+			sessions
+				.sort(byStartTime())
+				.map(({ title, startTime, stopTime, parts }, key) => (
+					<ListItem
+						threeLines
+						{...{ key }}
+						rightIcon={<FontIcon onClick={onDelete(key)}>delete</FontIcon>}
+						leftAvatar={
+							<Avatar suffix="teal">{title.length > 0 ? title.slice(0, 1).toUpperCase() : 'U'}</Avatar>
+						}
+						primaryText={title.length === 0 ? 'Untitled' : title}
+						secondaryText={[
+							parts && parts[0] && parts[0].startTime && parts[0].startTime.constructor === Date
+								? moment(parts[0].startTime.getTime()).format('lll')
+								: 'Never',
+							formatTime(reduceEllapsedTime(parts))
+						].join('\n')}
+					/>
+				))
+		) : (
+			<ListItem
+				primaryText="No sessions yet. Why not start one?"
+				disabled={true}
+				style={{
+					textAlign: 'center',
+					fontWeight: 'bold'
+				}}
+			/>
+		)}
+	</List>
 )
 
-const mapStateToProps = ({ sessions: { sessions }}) => ({
-  sessions
+const mapStateToProps = ({ sessions: { sessions } }) => ({
+	sessions
 })
 
 const mapDispatchToProps = dispatch => ({
-  onDelete: key => () => dispatch(deleteSession(key))
+	onDelete: key => () => dispatch(deleteSession(key))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionsList)

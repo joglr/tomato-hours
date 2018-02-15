@@ -5,11 +5,11 @@ import App from './App'
 import fakeStore from './../fake-store'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(
-    <Provider store={fakeStore}>
-      <App store={fakeStore}/>
-    </Provider>,
-    div
-  )
+	const div = document.createElement('div')
+	ReactDOM.render(
+		<Provider store={fakeStore}>
+			<App store={fakeStore} />
+		</Provider>,
+		div
+	)
 })
