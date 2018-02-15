@@ -9,10 +9,10 @@ const TimerView = () => <div>
   <TimeDisplay />
   <Grid noSpacing>
     { [
-      <StartButton key="start" />,
-      <PauseButton key="stop" />
-    ].map(el =>
-      <div key={el.type.WrappedComponent.name + '-wrapper'} className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
+			<StartButton />,
+			<PauseButton />
+		].map((el, key) =>
+			<div key={key} className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
         <div className="timer-button-wrap">
           {el}
         </div>
