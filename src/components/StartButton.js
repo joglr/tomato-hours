@@ -1,45 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  startTimerMiddleware,
-  stopTimerMiddleware,
-  pauseSession,
-  unpauseSession,
-  endSession,
-} from './../actions'
-import Button from 'react-md/lib/Buttons/Button'
+import { startTimerMiddleware, stopTimerMiddleware, pauseSession, unpauseSession, endSession } from './../actions'
+import ToggleButton from './ToggleButton'
 
-let StartButton = ({ active, onButtonClick }) => {
-  const propsToAdd = {
-    label: active
-      ? 'End session'
-      : 'Begin session'
-  }
-  propsToAdd[active
-    ? 'secondary'
-    : 'primary'
-  ] = true
-  const icon = active
-    ? 'timer_off'
-    : 'timer'
-  return <Button
-    raised
-    { ...propsToAdd }
-    tooltipLabel={ `${propsToAdd.label} timer`  }
-    tooltipDelay={ 200 }
-    onClick={ onButtonClick({ active }) }>{ icon }</Button>
+const StartButton = ({ active, onButtonClick }) => {
+	return (
+		<ToggleButton
+			primaryIcon={'timer_off'}
+			secondaryIcon={'timer'}
+			primaryLabel={'End session'}
+			secondaryLabel={'Begin session'}
+			condition={active}
+			onButtonClick={onButtonClick}
+		/>
+	)
 }
 
-const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({ active: startTime !== null || parts.length > 0 })
-
-const mapDispatchToProps = dispatch => ({
-  onButtonClick: ({ active }) => () => {
-    active
-      ? dispatch(pauseSession()) && dispatch(endSession()) && dispatch(stopTimerMiddleware())
-      : dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
-  }
+const mapStateToProps = ({ sessions: { currentSession: { startTime, parts } } }) => ({
+	active: startTime !== null || parts.length > 0
 })
 
-StartButton = connect(mapStateToProps, mapDispatchToProps)(StartButton)
+const mapDispatchToProps = dispatch => ({
+	onButtonClick: ({ condition }) => () => {
+		condition
+			? dispatch(pauseSession()) && dispatch(endSession()) && dispatch(stopTimerMiddleware())
+			: dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
+	}
+})
 
-export default StartButton
+export default connect(mapStateToProps, mapDispatchToProps)(StartButton)

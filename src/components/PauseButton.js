@@ -1,51 +1,32 @@
 //@ts-check
 import React from 'react'
-import Button from 'react-md/lib/Buttons/Button'
+import ToggleButton from './ToggleButton'
 import { connect } from 'react-redux'
-import {
-  startTimerMiddleware,
-  stopTimerMiddleware,
-  pauseSession,
-  unpauseSession
-} from './../actions'
+import { startTimerMiddleware, stopTimerMiddleware, pauseSession, unpauseSession } from './../actions'
 
-let PauseButton = ({ active, paused, disabled, onButtonClick }) => {
-  const propsToAdd = {
-    label: !paused
-      ? 'Pause session'
-      : 'Continue session',
-    disabled
-  }
-  propsToAdd[paused
-    ? 'raised'
-    : 'flat'
-  ] = true
-  const icon = paused
-    ? 'play_arrow'
-    : 'pause'
+const PauseButton = ({ paused, disabled, onButtonClick }) => (
+	<ToggleButton
+		primaryIcon={'pause'}
+		secondaryIcon={'play_arrow'}
+		primaryLabel={'Pause session'}
+		secondaryLabel={'Continue session'}
+		condition={!paused}
+		disabled={disabled}
+		onButtonClick={onButtonClick}
+	/>
+)
 
-  return <Button
-    { ...propsToAdd }
-    tooltipLabel={ `${propsToAdd.label} timer`  }
-    tooltipDelay={ 200 }
-    primary
-    onClick={ onButtonClick({ paused }) }>{ icon }</Button>
-}
-
-const mapStateToProps = ({ timer: { currentSession: { startTime, parts } }}) => ({
-  active: startTime !== null,
-  paused: startTime === null && parts.length > 0,
-  disabled: startTime === null && parts.length === 0
+const mapStateToProps = ({ sessions: { currentSession: { startTime, parts } } }) => ({
+	paused: startTime === null && parts.length > 0,
+	disabled: startTime === null && parts.length === 0
 })
 
 const mapDispatchToProps = dispatch => ({
-  onButtonClick: ({ paused }) => () => {
-    paused
-      ? dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
-      : dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
-  }
+	onButtonClick: ({ condition }) => () => {
+		condition
+			? dispatch(pauseSession()) && dispatch(stopTimerMiddleware())
+			: dispatch(unpauseSession()) && dispatch(startTimerMiddleware())
+	}
 })
 
-PauseButton = connect(mapStateToProps, mapDispatchToProps)(PauseButton)
-
-export default PauseButton
+export default connect(mapStateToProps, mapDispatchToProps)(PauseButton)
