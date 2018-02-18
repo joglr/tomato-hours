@@ -7,7 +7,9 @@ const Setting = ({ value, label, onChange }) => {
 	const id = Math.random()
 	return (
 		<ListItemControl
-			secondaryAction={<Switch id={id} name={id} label={label} onChange={onChange} defaultChecked={value} />}
+			secondaryAction={
+				<Switch id={id} name={id} label={label} onChange={onChange} defaultChecked={value} checked={value} />
+			}
 		/>
 	)
 }
