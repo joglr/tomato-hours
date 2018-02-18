@@ -1,5 +1,4 @@
 import reduceEllapsedTime from './reduce-ellapsed-time'
-import j from 'jest'
 
 it('throws if no parts array were passed', () => {
   expect(() => reduceEllapsedTime())
