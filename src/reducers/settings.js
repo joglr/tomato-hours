@@ -1,33 +1,41 @@
 import {
   TOGGLE_EARNED_SALARY_VISIBILITY,
   SET_HOURLY_RATE,
-  TOGGLE_REMEMBER_SETTINGS
+  TOGGLE_REMEMBER_SETTINGS,
+  TOGGLE_NOTIFICATIONS
 } from './../actions'
 
 export const defaultSettings = {
   showEarnedSalary: false,
   hourlyRate: 0,
-  rememberSettings: false
+  rememberSettings: false,
+  notifications: false
 }
 
-export default (state = defaultSettings, action) => {
-  switch (action.type) {
+export default (state = defaultSettings, { type, payload }) => {
+  switch (type) {
     case TOGGLE_EARNED_SALARY_VISIBILITY: {
       return {
         ...state,
-        showEarnedSalary: action.payload.value
+        showEarnedSalary: payload.value
       }
     }
     case SET_HOURLY_RATE: {
       return {
         ...state,
-        hourlyRate: Number(action.payload.value)
+        hourlyRate: Number(payload.value)
       }
     }
     case TOGGLE_REMEMBER_SETTINGS: {
       return {
         ...state,
-        rememberSettings: action.payload.value
+        rememberSettings: payload.value
+      }
+    }
+    case TOGGLE_NOTIFICATIONS: {
+      return {
+        ...state,
+        notifications: payload.value
       }
     }
     default:

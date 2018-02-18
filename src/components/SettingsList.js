@@ -33,6 +33,15 @@ const SettingsList = ({ onSettingChange, settings }) => (
 		) : (
 			[]
 		)}
+		<Setting
+			label="Notifications"
+			value={settings.notifications}
+			onChange={value => value
+				? Notification.requestPermission()
+					.then(result => onSettingChange('setEnableNotifications', result === 'granted'))
+				: onSettingChange('setEnableNotifications', value)
+			}
+		/>
 		{/* Redisplay when remember settings is working */
 		/*
     <Setting
