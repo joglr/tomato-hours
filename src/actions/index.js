@@ -43,6 +43,7 @@ export const setBreakHasBeenNotified = () => ({ type: SET_BREAK_HAS_BEEN_NOTIFIE
 export const TOGGLE_EARNED_SALARY_VISIBILITY = 'TOGGLE_EARNED_SALARY_VISIBILITY'
 export const SET_HOURLY_RATE = 'SET_HOURLY_RATE'
 export const TOGGLE_REMEMBER_SETTINGS = 'REMEMBER_SETTINGS'
+export const TOGGLE_NOTIFICATIONS = 'TOGGLE_NOTIFICATIONS'
 
 // Action creators
 export const setShowEarnedSalary = value => ({ type: TOGGLE_EARNED_SALARY_VISIBILITY, payload: { value } })
