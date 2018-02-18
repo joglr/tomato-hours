@@ -6,13 +6,15 @@ import {
 	UNPAUSE_SESSION,
 	END_SESSION,
 	SET_SESSION_TITLE,
-	DELETE_SESSION
+	DELETE_SESSION,
+	SET_BREAK_HAS_BEEN_NOTIFIED
 } from './../actions'
 
 export const defaultSession = {
 	currentSession: {
 		title: '',
 		startTime: null,
+		breakHasBeenNotified: false,
 		ellapsedTime: 0,
 		parts: []
 	},
@@ -70,6 +72,7 @@ export default (state = defaultSession, { type, payload }) => {
 					// Temporary method of inputing startTime
 					...state.currentSession,
 					parts: state.currentSession.parts,
+          breakHasBeenNotified: false,
 					startTime,
 					ellapsedTime: reduceEllapsedTime(state.currentSession.parts)
 				}
@@ -117,5 +120,15 @@ export default (state = defaultSession, { type, payload }) => {
 		default: {
 			return state
 		}
+
+    case SET_BREAK_HAS_BEEN_NOTIFIED: {
+      return {
+        ...state,
+        currentSession: {
+          ...state.currentSession,
+          breakHasBeenNotified: true
+        }
+      }
+    }
 	}
 }

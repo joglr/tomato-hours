@@ -15,6 +15,7 @@ export const UNPAUSE_SESSION = 'UNPAUSE_SESSION'
 export const END_SESSION = 'END_SESSION'
 export const SET_SESSION_TITLE = 'SET_SESSION_TITLE'
 export const DELETE_SESSION = 'DELETE_SESSION'
+export const SET_BREAK_HAS_BEEN_NOTIFIED = 'SET_BREAK_HAS_BEEN_NOTIFIED'
 
 // Other constants
 export const TIMER_NAME = 'TOMATO_TIMER'
@@ -32,6 +33,7 @@ export const unpauseSession = () => ({ type: UNPAUSE_SESSION })
 export const endSession = () => ({ type: END_SESSION })
 export const setSessionTitle = value => ({ type: SET_SESSION_TITLE, payload: { value } })
 export const deleteSession = value => ({ type: DELETE_SESSION, payload: { value } })
+export const setBreakHasBeenNotified = () => ({ type: SET_BREAK_HAS_BEEN_NOTIFIED })
 
 /*
  * Settings

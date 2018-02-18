@@ -11,6 +11,7 @@ import App from './components/App'
 import './theme'
 import registerServiceWorker from './registerServiceWorker'
 import ReactGA from 'react-ga'
+import breakNotifier from './break-notifier'
 
 if (process.env.NODE_ENV === 'production') {
   ReactGA.initialize("UA-114113941-1")
@@ -33,6 +34,8 @@ const store = createStore(
   tomatoHours,
   applyMiddleware(crashReporter, logger, timerMiddleware)
 )
+
+store.subscribe(() => breakNotifier(store))
 // onAuthStateChanged(user) {
   //   if (!user) signInWithRedirect(firebase)()
   //   else {
