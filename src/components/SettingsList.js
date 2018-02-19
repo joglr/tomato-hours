@@ -53,7 +53,11 @@ const SettingsList = ({ onSettingChange, settings }) => (
 					defaultValue={settings.sessionDuration}
 					floating={true}
 					placeholder="in minutes"
+<<<<<<< HEAD
 					onChange={debounce(value => onSettingChange('setSessionDuration', Number(value)), 1200)}
+=======
+					onChange={value => onSettingChange('setSessionDuration', value)}
+>>>>>>> 213c7eb3a50490ba84aa30317669d4aa01517a21
 				/>
 			</div>
 		) : (
