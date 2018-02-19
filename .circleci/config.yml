@@ -64,6 +64,7 @@ jobs:
             - build
             - node_modules
           key: v1-build-{{ .Branch }}-{{ .Revision }}
+
   deploy:
     docker:
       # specify the version you desire here
@@ -117,6 +118,7 @@ jobs:
       # run tests!
       - run: npm run check-icon-update
       - run: npm run deploy-ci-dev
+
 workflows:
   version: 2
   deploy-build:
