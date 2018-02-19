@@ -125,6 +125,9 @@ workflows:
       - build:
           requires:
             - test
+          filters:
+            branches:
+              ignore: develop
       - deploy:
           requires:
             - build
