@@ -34,7 +34,7 @@ const SettingsList = ({ onSettingChange, settings }) => (
 			[]
 		)}
 		<Setting
-			label="Notifications"
+			label="Break notifications"
 			value={settings.notifications}
 			onChange={value => value
 				? Notification.requestPermission()
@@ -42,6 +42,22 @@ const SettingsList = ({ onSettingChange, settings }) => (
 				: onSettingChange('setEnableNotifications', value)
 			}
 		/>
+		{settings.notifications ? (
+			<div className="settings__text-field-wrapper">
+				<TextField
+					label="Session duration"
+					id="floatingCenterTitle"
+					leftIcon={<FontIcon>watch_later</FontIcon>}
+					type="number"
+					defaultValue={settings.sessionDuration}
+					floating={true}
+					placeholder="in minutes"
+					onChange={value => onSettingChange('setSessionDuration', value)}
+				/>
+			</div>
+		) : (
+			[]
+		)}
 		{/* Redisplay when remember settings is working */
 		/*
     <Setting

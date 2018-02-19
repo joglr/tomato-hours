@@ -9,6 +9,7 @@ export const defaultSettings = {
   showEarnedSalary: false,
   hourlyRate: 0,
   rememberSettings: false,
+  sessionDuration: 25,
   notifications: false
 }
 
