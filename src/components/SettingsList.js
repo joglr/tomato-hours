@@ -5,6 +5,7 @@ import Subheader from 'react-md/lib/Subheaders'
 import List from 'react-md/lib/Lists/List'
 import FontIcon from 'react-md/lib/FontIcons'
 import TextField from 'react-md/lib/TextFields'
+import debounce from 'lodash.debounce'
 import Setting from './../components/Setting'
 import { settingToggleActionCreators } from './../actions'
 import './SettingsList.css'
@@ -52,7 +53,7 @@ const SettingsList = ({ onSettingChange, settings }) => (
 					defaultValue={settings.sessionDuration}
 					floating={true}
 					placeholder="in minutes"
-					onChange={value => onSettingChange('setSessionDuration', Number(value))}
+					onChange={debounce(value => onSettingChange('setSessionDuration', Number(value)), 1200)}
 				/>
 			</div>
 		) : (
