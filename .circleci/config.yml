@@ -119,10 +119,9 @@ jobs:
       - run: npm run deploy-ci-dev
 workflows:
   version: 2
-
   deploy-build:
     jobs:
-      - test
+      - test:
           filters:
             branches:
               ignore: develop
@@ -141,7 +140,7 @@ workflows:
       branches:
         only: develop
     jobs:
-      - test:
+      - test
       - build:
           requires:
             - test
