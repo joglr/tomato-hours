@@ -137,11 +137,11 @@ workflows:
               only: master
 
   deploy-dev-build:
+    filters:
+      branches:
+        only: develop
     jobs:
-      - test
-          filters:
-            branches:
-              only: develop
+      - test:
       - build:
           requires:
             - test
