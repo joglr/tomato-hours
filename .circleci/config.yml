@@ -132,15 +132,15 @@ workflows:
             branches:
               only: master
 
-deploy-dev-build:
-  jobs:
-    - test
-    - build:
-        requires:
-          - test
-    - deploy-dev:
-        requires:
-          - build
-        filters:
-          branches:
-            only: develop
+  deploy-dev-build:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+      - deploy-dev:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
