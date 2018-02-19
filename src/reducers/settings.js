@@ -2,13 +2,15 @@ import {
   TOGGLE_EARNED_SALARY_VISIBILITY,
   SET_HOURLY_RATE,
   TOGGLE_REMEMBER_SETTINGS,
-  TOGGLE_NOTIFICATIONS
+  TOGGLE_NOTIFICATIONS,
+  SET_SESSION_DURATION
 } from './../actions'
 
 export const defaultSettings = {
   showEarnedSalary: false,
   hourlyRate: 0,
   rememberSettings: false,
+  sessionDuration: 25,
   notifications: false
 }
 
@@ -36,6 +38,12 @@ export default (state = defaultSettings, { type, payload }) => {
       return {
         ...state,
         notifications: payload.value
+      }
+    }
+    case SET_SESSION_DURATION: {
+      return {
+        ...state,
+        sessionDuration: payload.value
       }
     }
     default:
