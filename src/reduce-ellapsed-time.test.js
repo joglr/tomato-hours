@@ -1,8 +1,17 @@
 import reduceEllapsedTime from './reduce-ellapsed-time'
 
-it('throws if no parts array were passed', () => {
+it('throws if no parts were passed', () => {
   expect(() => reduceEllapsedTime())
     .toThrow('no parts received')
+})
+
+it('throws if no array were passed', () => {
+  expect(() => reduceEllapsedTime({ not: 'an array' }))
+    .toThrow('array expected')
+})
+
+it('throws if invalid part is received', () => {
+  expect(() => reduceEllapsedTime([null])).toThrow('invalid part received')
 })
 
 it('throws if invalid startTime were passed', () => {
