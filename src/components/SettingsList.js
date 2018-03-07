@@ -37,11 +37,14 @@ const SettingsList = ({ onSettingChange, settings }) => (
 		<Setting
 			label="Break notifications"
 			value={settings.notifications}
-			onChange={value => value
-				? Notification.requestPermission()
-					.then(result => onSettingChange('setEnableNotifications', result === 'granted'))
-				: onSettingChange('setEnableNotifications', value)
-			}
+			onChange={value =>
+				value
+					? Notification.requestPermission().then(result =>
+							navigator.serviceWorker.ready.then(() =>
+								onSettingChange('setEnableNotifications', result === 'granted')
+							)
+						)
+					: onSettingChange('setEnableNotifications', value)}
 		/>
 		{settings.notifications ? (
 			<div className="settings__text-field-wrapper">

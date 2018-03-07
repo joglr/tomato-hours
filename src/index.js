@@ -9,15 +9,22 @@ import tomatoHours from './reducers'
 import App from './components/App'
 import './theme'
 import registerServiceWorker from './registerServiceWorker'
+import { calculateEllapsedTime } from './reduce-ellapsed-time'
+import { setBreakHasBeenNotified } from './actions'
 import breakNotifier from './break-notifier'
 import './analytics'
 
-const store = createStore(
-  tomatoHours,
-  applyMiddleware(crashReporter, logger, timerMiddleware)
-)
+const store = createStore(tomatoHours, applyMiddleware(crashReporter, logger, timerMiddleware))
 
-store.subscribe(() => breakNotifier(store))
+store.subscribe(() =>
+	breakNotifier({
+		store,
+		navigator,
+		Date,
+		calculateEllapsedTime,
+		setBreakHasBeenNotified
+	})
+)
 
 render(
   <Provider store={store}>
