@@ -3,7 +3,11 @@
   "version": "1.2.0",
   "private": true,
   "homepage": "https://tomato-hours.firebaseapp.com",
-  "author": "Jonas Røssum <http://jonas.fyi>",
+  "author": {
+    "name": "Jonas Røssum",
+    "url": "https://jonasroessum.dk",
+    "email": "jonas.g.roessum@gmail.com"
+  },
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.42",
     "firebase": "^4.1.3",
@@ -36,7 +40,10 @@
     "build": "rimraf build && react-scripts build && npm run icon",
     "serve-build": "npm run build && serve build",
     "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
-    "deploy": "npm run test && npm run build && firebase deploy",
+    "deploy-master": "npm run test && npm run build && npm run firebase-deploy-master",
+    "deploy-dev": "npm run test && npm run build && npm run firebase-deploy-dev",
+    "firebase-deploy-master": "firebase use tomato-hours && firebase deploy -m \"Branch master\" --only hosting",
+    "firebase-deploy-dev": "firebase use tomato-hours-beta && firebase deploy -m \"Branch dev\" --only hosting",
     "deploy-ci-master": "firebase use tomato-hours && firebase deploy -m \"Branch $CIRCLE_BRANCH, build $CIRCLE_SHA1\" --only hosting --non-interactive --token=$FIREBASE_DEPLOY_KEY",
     "deploy-ci-dev": "firebase use tomato-hours-beta && firebase deploy -m \"Branch $CIRCLE_BRANCH, build $CIRCLE_SHA1\" --only hosting --non-interactive --token=$FIREBASE_DEPLOY_KEY_BETA",
     "test-watch": "react-scripts test --env=jsdom --verbose",
