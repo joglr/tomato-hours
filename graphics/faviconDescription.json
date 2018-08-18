@@ -43,8 +43,8 @@
 				"declared": true
 			},
 			"assets": {
-				"legacyIcon": false,
-				"lowResolutionIcons": false
+				"legacyIcon": true,
+				"lowResolutionIcons": true
 			}
 		},
 		"safariPinnedTab": {

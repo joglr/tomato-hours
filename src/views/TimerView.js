@@ -1,22 +1,36 @@
 import React from 'react'
-import Grid from 'react-md/lib/Grids/Grid'
+import Grid from '@material-ui/core/Grid'
 import TimeDisplay from './../components/TimeDisplay'
 import StartButton from './../components/StartButton'
 import PauseButton from './../components/PauseButton'
 import TitleField from './../components/TitleField'
+import { withStyles } from '@material-ui/core/styles'
 
-const TimerView = () => (
-	<div>
-		<TimeDisplay />
-		<Grid noSpacing>
-			{[ <StartButton />, <PauseButton /> ].map((el, key) => (
-				<div key={key} className="md-cell--2-phone md-cell--4-tablet md-cell--6-desktop">
-					<div className="timer-button-wrap">{el}</div>
-				</div>
-			))}
-			<TitleField />
-		</Grid>
-	</div>
+const styles = theme => ({
+  root: {
+    padding: 4 * theme.spacing.unit
+  }
+})
+
+const TimerView = ({ classes }) => (
+  <div className={classes.root}>
+    <TimeDisplay />
+    <Grid container justify="space-evenly" spacing={24}>
+      {[
+        StartButton,
+        PauseButton
+      ].map((Button, key) => (
+        <Grid key={key} item xs={3}>
+						<Button />
+        </Grid>
+      ))}
+      <Grid container justify="center">
+        <Grid item>
+          <TitleField />
+        </Grid>
+      </Grid>
+    </Grid>
+  </div>
 )
 
-export default TimerView
+export default withStyles(styles)(TimerView)

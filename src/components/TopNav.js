@@ -1,24 +1,35 @@
 //@ts-check
 import React from 'react'
-import { connect } from 'react-redux'
-import Toolbar from 'react-md/lib/Toolbars/Toolbar'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 // import Button from 'react-md/lib/Buttons/Button'
-let TopNav = ({ appName }) => (
-  <Toolbar
-  colored
+
+const styles = {
+  root: {
+    // flexGrow: 1
+  }
+}
+
+let TopNav = ({ appName, classes }) => (
+  <AppBar
+    className={classes.root}
+    position="static"
+    color="primary">
+    <Toolbar>
+      <Typography variant="title" color="inherit">
+        {appName}
+      </Typography>
+    </Toolbar>
+  </AppBar>
   // nav={<Button
   //   key="nav"
   //   icon
   //   onClick={() => ({})} >
   //   {'menu'}
   // </Button>}
-  title={appName}
   // actions={<KebabMenu id="toolbar-prominent-kebab-menu" />}
-
-/>
 )
 
-TopNav = connect()(TopNav)
-
-export default TopNav
-
+export default withStyles(styles)(TopNav)

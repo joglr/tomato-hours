@@ -2,5 +2,6 @@
   "eslint.enable": true,
   "prettier.semi": false,
   "prettier.arrowParens": false,
-  "prettier.jsxBracketSameLine": true
+  "prettier.jsxBracketSameLine": true,
+  "prettier.printWidth": 60
 }

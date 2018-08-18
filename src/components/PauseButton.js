@@ -3,11 +3,13 @@ import React from 'react'
 import ToggleButton from './ToggleButton'
 import { connect } from 'react-redux'
 import { startTimerMiddleware, stopTimerMiddleware, pauseSession, unpauseSession } from './../actions'
+import PauseIcon from '@material-ui/icons/Pause'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 const PauseButton = ({ paused, disabled, onButtonClick }) => (
 	<ToggleButton
-		primaryIcon={'pause'}
-		secondaryIcon={'play_arrow'}
+		PrimaryIcon={<PauseIcon />}
+		SecondaryIcon={<PlayArrowIcon />}
 		primaryLabel={'Pause session'}
 		secondaryLabel={'Continue session'}
 		condition={!paused}

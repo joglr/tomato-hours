@@ -123,10 +123,10 @@ workflows:
   version: 2
   deploy-build:
     jobs:
+      filters:
+        branches:
+          ignore: develop
       - test:
-          filters:
-            branches:
-              ignore: develop
       - build:
           requires:
             - test
@@ -137,15 +137,15 @@ workflows:
             branches:
               only: master
 
-  deploy-dev-build:
-    filters:
-      branches:
-        only: develop
+  deploy-build-dev:
     jobs:
-      - test
+      - test:
+          filters:
+            branches:
+              only: develop
       - build:
           requires:
             - test
-      - deploy-dev:
+      - deploy:
           requires:
             - build

@@ -6,7 +6,6 @@ const EarnedSalary = ({ earnedSalary }) => {
 	return (
 		<div
 			style={{
-				padding: '1rem',
 				textAlign: 'center'
 			}}>
 			Earned salary: <span style={{ fontWeight: 'bold' }}>{earnedSalary}</span>

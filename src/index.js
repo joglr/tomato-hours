@@ -7,29 +7,38 @@ import logger from './logger'
 import crashReporter from './crash-reporter'
 import tomatoHours from './reducers'
 import App from './components/App'
-import './theme'
+import theme from './theme'
 import registerServiceWorker from './registerServiceWorker'
 import { calculateEllapsedTime } from './reduce-ellapsed-time'
 import { setBreakHasBeenNotified } from './actions'
 import breakNotifier from './break-notifier'
 import './analytics'
+import {
+  MuiThemeProvider,
+  createMuiTheme
+} from '@material-ui/core/styles'
 
-const store = createStore(tomatoHours, applyMiddleware(crashReporter, logger, timerMiddleware))
+const store = createStore(
+  tomatoHours,
+  applyMiddleware(crashReporter, logger, timerMiddleware)
+)
 
 store.subscribe(() =>
-	breakNotifier({
-		store,
-		navigator,
-		Date,
-		calculateEllapsedTime,
-		setBreakHasBeenNotified
-	})
+  breakNotifier({
+    store,
+    navigator,
+    Date,
+    calculateEllapsedTime,
+    setBreakHasBeenNotified
+  })
 )
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <MuiThemeProvider theme={createMuiTheme(theme)}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 )
 

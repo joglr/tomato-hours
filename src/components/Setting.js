@@ -1,23 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ListItemControl from 'react-md/lib/Lists/ListItemControl'
-import Switch from 'react-md/lib/SelectionControls/Switch'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 
-const Setting = ({ value, label, onChange }) => {
-	const id = Math.random()
-	return (
-		<ListItemControl
-			secondaryAction={
-				<Switch id={id} name={id} label={label} onChange={onChange} defaultChecked={value} checked={value} />
-			}
-		/>
-	)
-}
+import Switch from '@material-ui/core/Switch'
+
+const Setting = ({ value, label, onChange, Icon }) => (
+  <ListItem>
+    {Icon ? <ListItemIcon>{Icon}</ListItemIcon> : []}
+    <ListItemText primary={label} />
+    <ListItemSecondaryAction>
+      <Switch
+        onChange={({ target: { checked }}) => onChange(checked)}
+        checked={value}
+      />
+    </ListItemSecondaryAction>
+  </ListItem>
+)
 
 Setting.propTypes = {
-	onChange: PropTypes.func.isRequired,
-	value: PropTypes.bool.isRequired,
-	label: PropTypes.string.isRequired
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired
 }
 
 export default Setting

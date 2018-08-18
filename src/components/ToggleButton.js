@@ -1,24 +1,32 @@
 import React from 'react'
-import Button from 'react-md/lib/Buttons/Button'
+import Button from '@material-ui/core/Button'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const ToggleButton = ({
-	primaryLabel,
-	secondaryLabel,
-	primaryIcon,
-	secondaryIcon,
-	condition,
-	disabled,
-	onButtonClick
+  primaryLabel,
+  secondaryLabel,
+  PrimaryIcon,
+  SecondaryIcon,
+  condition,
+  disabled,
+  onButtonClick
 }) => (
-	<Button
-		floating
-		{...(condition ? { primary: true } : { secondary: true })}
-		tooltipLabel={condition ? primaryLabel : secondaryLabel}
-		tooltipDelay={200}
-		disabled={disabled}
-		onClick={onButtonClick({ condition })}>
-		{condition ? primaryIcon : secondaryIcon}
-	</Button>
+  <Tooltip
+    id="tooltip-icon"
+    title={condition ? primaryLabel : secondaryLabel}>
+    <div>
+      <Button
+        variant="fab"
+        color={condition ? 'primary' : 'secondary'}
+        aria-label={
+          condition ? primaryLabel : secondaryLabel
+        }
+        disabled={disabled}
+        onClick={onButtonClick({ condition })}>
+        {condition ? PrimaryIcon : SecondaryIcon}
+      </Button>
+    </div>
+  </Tooltip>
 )
 
 export default ToggleButton
