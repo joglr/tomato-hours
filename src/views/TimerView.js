@@ -21,7 +21,7 @@ const TimerView = ({ classes }) => (
         PauseButton
       ].map((Button, key) => (
         <Grid key={key} item xs={3}>
-						<Button />
+					<Button />
         </Grid>
       ))}
       <Grid container justify="center">
