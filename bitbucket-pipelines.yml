@@ -11,8 +11,26 @@ pipelines:
         caches:
           - node
         script:
-          - npm install
-          - npm install firebase-tools cli-real-favicon -g
+          - npm ci
+          - npm test
+  branches:
+    master:
+    - step:
+        caches:
+          - node
+        script:
+          - npm ci
+          - npm ci firebase-tools cli-real-favicon -g
           - real-favicon check-for-update --fail-on-update faviconData.json
           - npm run build
           - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --only hosting --non-interactive --token $FIREBASE_DEPLOY_KEY
+    develop:
+    - step:
+        caches:
+          - node
+        script:
+          - npm ci
+          - npm ci firebase-tools cli-real-favicon -g
+          - real-favicon check-for-update --fail-on-update faviconData.json
+          - npm run build
+          - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --only hosting --non-interactive --token $FIREBASE_DEPLOY_KEY_BETA

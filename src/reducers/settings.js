@@ -1,33 +1,65 @@
 import {
-  TOGGLE_EARNED_SALARY_VISIBILITY,
+  SET_DISPLAY_EARNED_SALARY,
   SET_HOURLY_RATE,
-  TOGGLE_REMEMBER_SETTINGS
+  SET_ENABLE_BREAKS,
+  SET_ENABLE_NOTIFICATIONS,
+  SET_SESSION_DURATION,
+  SET_REMEMBER_SETTINGS,
+  SET_DISPLAY_ABOUT_DIALOG
 } from './../actions'
 
 export const defaultSettings = {
   showEarnedSalary: false,
   hourlyRate: 0,
-  rememberSettings: false
+  rememberSettings: false,
+  sessionDuration: '',
+  enableBreaks: false,
+  notifications: false,
+  displayAboutDialog: false
 }
 
-export default (state = defaultSettings, action) => {
-  switch (action.type) {
-    case TOGGLE_EARNED_SALARY_VISIBILITY: {
+export default (state = defaultSettings, { type, payload }) => {
+  switch (type) {
+    case SET_DISPLAY_EARNED_SALARY: {
       return {
         ...state,
-        showEarnedSalary: action.payload.value
+        showEarnedSalary: payload.value
       }
     }
     case SET_HOURLY_RATE: {
       return {
         ...state,
-        hourlyRate: Number(action.payload.value)
+        hourlyRate: Number(payload.value)
       }
     }
-    case TOGGLE_REMEMBER_SETTINGS: {
+    case SET_ENABLE_BREAKS: {
       return {
         ...state,
-        rememberSettings: action.payload.value
+        enableBreaks: payload.value
+      }
+    }
+    case SET_REMEMBER_SETTINGS: {
+      return {
+        ...state,
+        rememberSettings: payload.value
+      }
+    }
+    case SET_ENABLE_NOTIFICATIONS: {
+      return {
+        ...state,
+        notifications: payload.value
+      }
+    }
+    case SET_SESSION_DURATION: {
+      return {
+        ...state,
+        sessionDuration: payload.value
+      }
+    }
+    case SET_DISPLAY_ABOUT_DIALOG: {
+      return {
+        ...state,
+        displayAboutDialog: payload.value
       }
     }
     default:

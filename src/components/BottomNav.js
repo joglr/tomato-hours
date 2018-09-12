@@ -1,32 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import BottomNavigation from 'react-md/lib/BottomNavigations/BottomNavigation'
-import FontIcon from 'react-md/lib/FontIcons/FontIcon'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
+import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import ListIcon from '@material-ui/icons/List'
+import SettingsIcon from '@material-ui/icons/Settings'
+import CodeIcon from '@material-ui/icons/Code'
 
-const links = [
-	{
-		label: 'Timer',
-		icon: <FontIcon>access_time</FontIcon>
-	},
-	{
-		label: 'Sessions',
-		icon: <FontIcon>list</FontIcon>
-	},
-	{
-		label: 'Settings',
-		icon: <FontIcon>settings</FontIcon>
-	}
+const actions = [
+  <BottomNavigationAction
+    key="timer"
+    label="Timer"
+    icon={<AccessTimeIcon />}
+  />,
+  <BottomNavigationAction
+    key="sessions"
+    label="Sessions"
+    icon={<ListIcon />}
+  />,
+  <BottomNavigationAction
+    key="settings"
+    label="Settings"
+    icon={<SettingsIcon />}
+  />
 ]
 
 if (process.env.NODE_ENV === 'development') {
-	links.push({
-		label: 'Debug',
-		icon: <FontIcon>code</FontIcon>
-	})
+  actions.push(
+    <BottomNavigationAction
+      key="debug"
+      label="Debug"
+      icon={<CodeIcon />}
+    />
+  )
 }
 
-let BottomNav = ({ onNavChange }) => <BottomNavigation links={links} dynamic={false} onNavChange={onNavChange} />
+const BottomNav = ({ view, onNavChange }) => (
+  <BottomNavigation value={view} onChange={onNavChange}>
+    {actions}
+  </BottomNavigation>
+)
 
-BottomNav = connect()(BottomNav)
-
-export default BottomNav
+export default connect()(BottomNav)
