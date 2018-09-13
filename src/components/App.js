@@ -53,11 +53,6 @@ class App extends Component {
 				) : (
 					[]
 				)}
-				<Grid container>
-					<Grid item alignItems="center" direction="column" style={{backgroundColor: 'red'}}>
-						hello
-					</Grid>
-				</Grid>
 			</div>
 		)
 	}
