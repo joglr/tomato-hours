@@ -8,6 +8,21 @@
     "url": "https://jonasroessum.com",
     "email": "jonas.g.roessum@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joglr/tomato-hours.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rimraf build && react-scripts build && npm run icon",
+    "serve-build": "npm run build && serve build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
+    "test-watch": "react-scripts test --env=jsdom --verbose",
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject",
+    "icon": "real-favicon generate './graphics/faviconDescription.json' './graphics/faviconData.json' 'build/static/media' && real-favicon inject './graphics/faviconData.json' './build' './build/index.html'",
+    "check-icon-update": "real-favicon check-for-update --fail-on-update './graphics/faviconData.json'"
+  },
   "dependencies": {
     "@material-ui/core": "^1.4.3",
     "@material-ui/icons": "^1.1.0",
@@ -31,29 +46,7 @@
     "cross-env": "^5.1.3",
     "eslint-plugin-jest": "^21.12.1",
     "eslint-plugin-react": "^7.6.1",
-    "firebase-tools": "^3.17.4",
     "react-scripts": "^1.1.4",
     "rimraf": "^2.6.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "rimraf build && react-scripts build && npm run icon",
-    "serve-build": "npm run build && serve build",
-    "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
-    "deploy-master": "npm run test && npm run build && npm run firebase-deploy-master",
-    "deploy-dev": "npm run test && npm run build && npm run firebase-deploy-dev",
-    "firebase-deploy-master": "firebase use tomato-hours && firebase deploy -m \"Branch master\" --only hosting",
-    "firebase-deploy-dev": "firebase use tomato-hours-beta && firebase deploy -m \"Branch dev\" --only hosting",
-    "deploy-ci-master": "firebase use tomato-hours && firebase deploy -m \"Branch $CIRCLE_BRANCH, build $CIRCLE_SHA1\" --only hosting --non-interactive --token=$FIREBASE_DEPLOY_KEY",
-    "deploy-ci-dev": "firebase use tomato-hours-beta && firebase deploy -m \"Branch $CIRCLE_BRANCH, build $CIRCLE_SHA1\" --only hosting --non-interactive --token=$FIREBASE_DEPLOY_KEY_BETA",
-    "test-watch": "react-scripts test --env=jsdom --verbose",
-    "coverage": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject",
-    "icon": "real-favicon generate './graphics/faviconDescription.json' './graphics/faviconData.json' 'build/static/media' && real-favicon inject './graphics/faviconData.json' './build' './build/index.html'",
-    "check-icon-update": "real-favicon check-for-update --fail-on-update './graphics/faviconData.json'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://jonasroessum@bitbucket.org/jonasroessum/tomato-hours.git"
   }
 }
