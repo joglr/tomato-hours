@@ -34,7 +34,9 @@ let AboutDialog = ({
           secondary={
             <span>
               {author.name}{' '}
-              <a href={author.url+'/?utm_source=th-app&utm_medium=about-dialog'} target="_blank">
+              <a
+                href={author.url+'/?utm_source=th-app&utm_medium=about-dialog'} target="_blank"
+                rel="noopener noreferrer">
                 {/* {'<'} */}
                 {author.url}
                 {/* {'>'} */}

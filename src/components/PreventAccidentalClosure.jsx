@@ -11,7 +11,7 @@ class PreventAccidentalClosure extends Component {
 		e.returnValue = confirmationMessage
 		return confirmationMessage
 	}
-	componentWillMount() {
+	componentDidMount() {
 		const { addEventListener } = this.props
 		addEventListener(event, this.handleBeforeUnload, supportsPassive ? { passive: true } : false)
 	}
