@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let DebugView = ({ store }) => (
-  <code>
+let DebugView = ({ store, ...props }) => (
+  <code {...props}>
     <pre
       style={{
         fontFamily: 'Consolas'

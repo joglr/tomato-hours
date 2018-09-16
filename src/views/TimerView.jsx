@@ -12,8 +12,8 @@ const styles = theme => ({
   }
 })
 
-const TimerView = ({ classes }) => (
-  <div className={classes.root}>
+const TimerView = ({ classes, ...props }) => (
+  <div className={classes.root} {...props}>
     <TimeDisplay />
     <Grid container justify="space-evenly" spacing={24}>
       {[
