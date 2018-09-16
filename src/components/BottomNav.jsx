@@ -1,11 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import ListIcon from '@material-ui/icons/List'
 import SettingsIcon from '@material-ui/icons/Settings'
 import CodeIcon from '@material-ui/icons/Code'
+import { withStyles } from '@material-ui/core'
 
 const actions = [
   <BottomNavigationAction
@@ -35,10 +35,21 @@ if (process.env.NODE_ENV === 'development') {
   )
 }
 
-const BottomNav = ({ view, onNavChange }) => (
-  <BottomNavigation value={view} onChange={onNavChange}>
+const styles = {
+  root: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0
+  }
+}
+
+const BottomNav = ({ view, onNavChange, classes }) => (
+  <BottomNavigation
+    className={classes.root}
+    value={view}
+    onChange={onNavChange}>
     {actions}
   </BottomNavigation>
 )
-
-export default connect()(BottomNav)
+export default withStyles(styles)(BottomNav)
