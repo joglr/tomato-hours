@@ -5,7 +5,7 @@ FROM mhart/alpine-node:10
 WORKDIR /usr/src
 
 # Copy package manager files to the working directory and run install
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 RUN npm ci
 
 # Copy all files to the working directory
