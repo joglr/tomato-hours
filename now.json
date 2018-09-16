@@ -1,4 +1,13 @@
 {
   "name": "tomato-hours",
-  "alias": "tomato-hours"
+  "alias": "tomato-hours",
+  "type": "static",
+  "static": {
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
 }
