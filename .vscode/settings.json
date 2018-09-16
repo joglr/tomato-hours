@@ -1,7 +1,7 @@
 {
   "eslint.enable": false,
   "prettier.semi": false,
-  "prettier.arrowParens": false,
   "prettier.jsxBracketSameLine": true,
-  "prettier.printWidth": 60
+  "prettier.printWidth": 60,
+  "editor.formatOnSave": true
 }

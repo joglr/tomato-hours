@@ -35,7 +35,11 @@ let AboutDialog = ({
             <span>
               {author.name}{' '}
               <a
-                href={author.url+'/?utm_source=th-app&utm_medium=about-dialog'} target="_blank"
+                href={
+                  author.url +
+                  '/?utm_source=th-app&utm_medium=about-dialog'
+                }
+                target="_blank"
                 rel="noopener noreferrer">
                 {/* {'<'} */}
                 {author.url}
@@ -51,7 +55,9 @@ let AboutDialog = ({
         <Grid item>
           <Button
             element={'a'}
-            href={`mailto:${author.email}?subject=Tomato Hours`}
+            href={`mailto:${
+              author.email
+            }?subject=Tomato Hours`}
             variant="raised"
             color="primary">
             Contact author
@@ -76,8 +82,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setDisplayAboutDialog(false))
 })
 
-AboutDialog = connect(mapStateToProps, mapDispatchToProps)(
-  AboutDialog
-)
+AboutDialog = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AboutDialog)
 
 export default AboutDialog

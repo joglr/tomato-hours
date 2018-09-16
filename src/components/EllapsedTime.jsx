@@ -12,7 +12,9 @@ let EllapsedTime = ({
     <h1 style={{ textAlign: 'center' }}>
       {formatTime(ellapsedTime) || '0s'}
     </h1>
-    {notifications && sessionDuration > 0 && ellapsedTime > 0 ? (
+    {notifications &&
+    sessionDuration > 0 &&
+    ellapsedTime > 0 ? (
       <div
         style={{
           textAlign: 'center'
@@ -29,7 +31,9 @@ let EllapsedTime = ({
 )
 
 const mapStateToProps = ({
-  sessions: { currentSession: { ellapsedTime } },
+  sessions: {
+    currentSession: { ellapsedTime }
+  },
   settings: { notifications, sessionDuration }
 }) => ({
   ellapsedTime,

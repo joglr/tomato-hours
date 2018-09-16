@@ -45,15 +45,31 @@ const styles = theme => ({
 })
 
 const ViewLoader = ({ view, classes }) => (
-  <Grid container className={classes.root} direction="column" alignItems="center" spacing={0}>
-    <Grid item className={classes.grey}
-      // xl={4}
-      // lg={4}
-      // md={12}
-      // sm={12}
+  <Grid
+    container
+    className={classes.root}
+    direction="column"
+    alignItems="center"
+    spacing={0}>
+    <Grid
+      item
+      className={classes.grey}
+      xl={4}
+      lg={4}
+      md={12}
+      sm={12}
       xs={12}>
-        {getView(view)}
+      {getView(view)}
     </Grid>
+    <Grid
+      item
+      className={classes.grey}
+      xl={4}
+      lg={4}
+      md={12}
+      sm={12}
+      xs={12}
+    />
   </Grid>
 )
 

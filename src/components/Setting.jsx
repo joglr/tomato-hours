@@ -13,7 +13,9 @@ const Setting = ({ value, label, onChange, Icon }) => (
     <ListItemText primary={label} />
     <ListItemSecondaryAction>
       <Switch
-        onChange={({ target: { checked }}) => onChange(checked)}
+        onChange={({ target: { checked } }) =>
+          onChange(checked)
+        }
         checked={value}
       />
     </ListItemSecondaryAction>

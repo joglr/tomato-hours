@@ -1,15 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import {
+	Provider
+} from 'react-redux'
 import App from './App'
 import fakeStore from './../fake-store'
 
 it('renders without crashing', () => {
 	const div = document.createElement('div')
-	ReactDOM.render(
-		<Provider store={fakeStore}>
-			<App store={fakeStore} />
-		</Provider>,
+	ReactDOM.render( <
+		Provider store = {
+			fakeStore
+		} >
+		<
+		App store = {
+			fakeStore
+		}
+		/> <
+		/Provider>,
 		div
 	)
 })

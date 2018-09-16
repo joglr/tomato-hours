@@ -6,11 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 // import Button from 'react-md/lib/Buttons/Button'
 
-const styles = {
-  root: {
-    // flexGrow: 1
-  }
-}
+const styles = {}
 
 let TopNav = ({ appName, classes }) => (
   <AppBar

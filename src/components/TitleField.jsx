@@ -19,7 +19,9 @@ let TitleField = ({ title, onChangeField, classes }) => (
 )
 
 const mapStateToProps = ({
-  sessions: { currentSession: { title } }
+  sessions: {
+    currentSession: { title }
+  }
 }) => ({ title })
 
 const mapDispatchToProps = dispatch => ({
@@ -27,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setSessionTitle(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(TitleField)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(TitleField))
