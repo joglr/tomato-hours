@@ -36,9 +36,13 @@ const getView = view => {
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    display: 'block'
   },
-  grey: {
+  gridItem: {
+    margin: 'auto',
+    maxHeight: '',
+    marginBottom: '56px',
     backgroundColor: 'white',
     boxShadow: theme.shadows[1]
   }
@@ -53,7 +57,7 @@ const ViewLoader = ({ view, classes }) => (
     className={classes.root}>
     <Grid
       item
-      className={classes.grey}
+      className={classes.gridItem}
       xl={4}
       lg={4}
       md={12}
