@@ -9,6 +9,7 @@ import PreventAccidentalClosure from './PreventAccidentalClosure'
 import formatTime from './../format-time'
 import calculateEarnedSalary from './../calculate-earned-salary'
 import Grid from '@material-ui/core/Grid'
+
 const appName = 'Tomato Hours'
 
 const styles = theme => ({
@@ -53,11 +54,6 @@ class App extends Component {
 				) : (
 					[]
 				)}
-				<Grid container>
-					<Grid item alignItems="center" direction="column" style={{backgroundColor: 'red'}}>
-						hello
-					</Grid>
-				</Grid>
 			</div>
 		)
 	}
