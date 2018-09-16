@@ -13,8 +13,8 @@ const crashReporter = store => next => action => {
         extra: { action, state: store.getState() }
       })
     } else if (process.env.NODE_ENV === 'development') {
-      console.info('Exception caught')
-      console.error(err)
+      console.info('Exception caught') // eslint-disable-line
+      console.error(err) // eslint-disable-line
     }
     throw err
   }

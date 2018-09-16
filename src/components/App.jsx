@@ -6,13 +6,13 @@ import { withStyles } from '@material-ui/core/styles'
 import ViewLoader from './ViewLoader'
 import BottomNav from './BottomNav'
 import PreventAccidentalClosure from './PreventAccidentalClosure'
-import formatTime from './../format-time'
-import calculateEarnedSalary from './../calculate-earned-salary'
-import Grid from '@material-ui/core/Grid'
+import formatTime from '../helpers/format-time'
+import calculateEarnedSalary from '../helpers/calculate-earned-salary'
+// import Grid from '@material-ui/core/Grid'
 
 const appName = 'Tomato Hours'
 
-const styles = theme => ({
+const styles = () => ({
 	root: {
 		height: '100%',
 		display: 'flex',

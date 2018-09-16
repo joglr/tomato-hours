@@ -12,9 +12,9 @@ import Avatar from 'react-md/lib/Avatars/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { deleteSession } from './../actions'
-import reduceEllapsedTime from './../reduce-ellapsed-time'
-import formatTime from './../format-time'
-import byStartTime from './../by-start-time'
+import reduceEllapsedTime from '../helpers/reduce-ellapsed-time'
+import formatTime from '../helpers/format-time'
+import byStartTime from '../helpers/by-start-time'
 
 let SessionsList = ({ sessions, onDelete }) => (
   <List subheader={<ListSubheader>Sessions</ListSubheader>}>
@@ -22,7 +22,7 @@ let SessionsList = ({ sessions, onDelete }) => (
       sessions
         .sort(byStartTime())
         .map(
-          ({ title, startTime, stopTime, parts }, key) => (
+          ({ title, parts }, key) => (
             <ListItem key={key}
               threeLines
               {...{ key }}>

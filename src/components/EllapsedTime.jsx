@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import formatTime from './../format-time'
+import formatTime from './../helpers/format-time'
 
 let EllapsedTime = ({
   ellapsedTime,

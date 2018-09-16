@@ -1,5 +1,5 @@
-import reduceEllapsedTime from './../reduce-ellapsed-time'
-import getTimeFromHoursAndMinutes from './../get-time-from-hours-and-minutes'
+import reduceEllapsedTime from './../helpers/reduce-ellapsed-time'
+import getTimeFromHoursAndMinutes from './../helpers/get-time-from-hours-and-minutes'
 import {
   SESSION_TICK,
   PAUSE_SESSION,

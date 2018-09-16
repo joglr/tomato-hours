@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import calculateEarnedSalary from './../calculate-earned-salary'
+import calculateEarnedSalary from './../helpers/calculate-earned-salary'
 
 const EarnedSalary = ({ earnedSalary }) => {
 	return (

@@ -7,6 +7,8 @@ try {
   })
   window.addEventListener("testPassive", null, opts)
   window.removeEventListener("testPassive", null, opts)
-} catch (e) {}
+} catch (e) {
+  e
+}
 
 export default supportsPassive

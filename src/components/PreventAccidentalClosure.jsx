@@ -1,7 +1,7 @@
 //@ts-check
 
 import { Component } from 'react'
-import supportsPassive from './../supports-passive'
+import supportsPassive from './../helpers/supports-passive'
 
 const event = 'beforeunload'
 
