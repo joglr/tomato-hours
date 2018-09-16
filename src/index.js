@@ -7,6 +7,7 @@ import logger from './helpers/logger'
 import crashReporter from './helpers/crash-reporter'
 import tomatoHours from './reducers'
 import App from './components/App'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './theme'
 import registerServiceWorker from './registerServiceWorker'
 import { calculateEllapsedTime } from './helpers/reduce-ellapsed-time'
@@ -36,7 +37,9 @@ store.subscribe(() =>
 render(
   <MuiThemeProvider theme={createMuiTheme(theme)}>
     <Provider store={store}>
-      <App />
+      <CssBaseline>
+        <App />
+      </CssBaseline>
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')

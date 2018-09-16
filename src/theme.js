@@ -1,4 +1,3 @@
-import CssBaseline from '@material-ui/core/CssBaseline'
 import 'react-md/dist/react-md.red-teal.min.css'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import red from '@material-ui/core/colors/red'
