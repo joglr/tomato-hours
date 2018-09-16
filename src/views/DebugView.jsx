@@ -5,7 +5,8 @@ let DebugView = ({ store, ...props }) => (
   <code {...props}>
     <pre
       style={{
-        fontFamily: 'Consolas'
+        fontFamily: 'Consolas',
+        margin: 0
       }}>
       {JSON.stringify(store, null, 2)}
     </pre>
