@@ -36,8 +36,7 @@ const getView = view => {
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    // margin: 'auto'
+    flexGrow: 1
   },
   grey: {
     backgroundColor: 'white',
@@ -46,18 +45,16 @@ const styles = theme => ({
 })
 
 const ViewLoader = ({ view, classes }) => (
-  <div className={classes.root}>
-    <Grid container className={classes.root} direction="column" alignItems="center" spacing={0}>
-      <Grid item className={classes.grey}
-        // xl={4}
-        // lg={4}
-        // md={12}
-        // sm={12}
-        xs={12}>
-  {getView(view)}
-      </Grid>
+  <Grid container className={classes.root} direction="column" alignItems="center" spacing={0}>
+    <Grid item className={classes.grey}
+      // xl={4}
+      // lg={4}
+      // md={12}
+      // sm={12}
+      xs={12}>
+        {getView(view)}
     </Grid>
-    </div>
+  </Grid>
 )
 
 ViewLoader.propTypes = {
