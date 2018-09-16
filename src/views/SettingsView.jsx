@@ -35,9 +35,10 @@ const SettingsList = ({
   onSettingChange,
   onAboutDialogOpen,
   settings,
-  classes
+  classes,
+  ...props
 }) => (
-  <div className={classes.root}>
+  <div className={classes.root} {...props}>
     <List
       className="settings"
       subheader={<ListSubheader>Settings</ListSubheader>}>

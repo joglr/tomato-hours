@@ -16,8 +16,8 @@ import reduceEllapsedTime from './../helpers/reduce-ellapsed-time'
 import formatTime from './../helpers/format-time'
 import byStartTime from './../helpers/by-start-time'
 
-let SessionsList = ({ sessions, onDelete }) => (
-  <List subheader={<ListSubheader>Sessions</ListSubheader>}>
+let SessionsList = ({ sessions, onDelete, ...props }) => (
+  <List subheader={<ListSubheader>Sessions</ListSubheader>} {...props}>
     {sessions.length > 0 ? (
       sessions
         .sort(byStartTime())
