@@ -15,5 +15,5 @@ COPY . .
 RUN CI=true npm test
 
 # Build the app and move the resulting build to the `/public` directory
-RUN npm build
+RUN npm run build
 RUN mv ./build /public
