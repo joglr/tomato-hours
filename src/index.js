@@ -9,7 +9,6 @@ import tomatoHours from './reducers'
 import App from './components/App'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './theme'
-import registerServiceWorker from './registerServiceWorker'
 import { calculateEllapsedTime } from './helpers/reduce-ellapsed-time'
 import { setBreakHasBeenNotified } from './actions'
 import breakNotifier from './helpers/break-notifier'
@@ -18,6 +17,7 @@ import {
   MuiThemeProvider,
   createMuiTheme
 } from '@material-ui/core/styles'
+import * as serviceWorker from './serviceWorker'
 
 const store = createStore(
   tomatoHours,
@@ -45,4 +45,4 @@ render(
   document.getElementById('root')
 )
 
-registerServiceWorker()
+serviceWorker.register()
