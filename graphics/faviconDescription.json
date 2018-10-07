@@ -1,5 +1,5 @@
 {
-	"masterPicture": "graphics/tomato-plate.svg",
+	"masterPicture": "graphics/tomato-hours-plate.svg",
 	"iconsPath": "/",
 	"design": {
 		"ios": {
@@ -15,7 +15,7 @@
 		},
 		"desktopBrowser": {},
 		"windows": {
-			"masterPicture": "graphics/tomato-outline.svg",
+			"masterPicture": "graphics/tomato-hours-outline.svg",
 			"pictureAspect": "noChange",
 			"backgroundColor": "#f44336",
 			"onConflict": "override",
@@ -46,7 +46,7 @@
 			}
 		},
 		"safariPinnedTab": {
-			"masterPicture": "graphics/tomato-outline.svg",
+			"masterPicture": "graphics/tomato-hours-outline.svg",
 			"pictureAspect": "silhouette",
 			"themeColor": "#f44336"
 		}

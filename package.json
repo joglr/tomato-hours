@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "rimraf build && react-scripts build && npm run icon",
     "serve-build": "npm run build && npx serve build",
-    "deploy": "now --public && now alias",
+    "deploy": "npm run build && npm run test && now --public && now alias",
     "test": "cross-env CI=true react-scripts test --env=jsdom --verbose",
     "test-watch": "react-scripts test --env=jsdom --verbose",
     "coverage": "react-scripts test --env=jsdom --coverage",
