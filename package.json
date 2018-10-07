@@ -21,7 +21,7 @@
     "test-watch": "react-scripts test --env=jsdom --verbose",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
-    "icon": "real-favicon generate ./graphics/faviconDescription.json ./graphics/faviconData.json ./build/static/media && real-favicon inject ./graphics/faviconData.json ./build ./build/index.html",
+    "icon": "real-favicon generate ./graphics/faviconDescription.json ./graphics/faviconData.json ./build && real-favicon inject ./graphics/faviconData.json ./build ./build/index.html",
     "check-icon-update": "real-favicon check-for-update --fail-on-update ./graphics/faviconData.json"
   },
   "dependencies": {

@@ -1,13 +1,11 @@
 {
-	"masterPicture": "public/time-tracker-plate.svg",
-	"iconsPath": "/static/media",
+	"masterPicture": "graphics/tomato-plate.svg",
+	"iconsPath": "/",
 	"design": {
 		"ios": {
-			"masterPicture": {
-				"type": "inline",
-				"content": "public/time-tracker-white.svg"
-			},
-			"pictureAspect": "noChange",
+			"pictureAspect": "backgroundAndMargin",
+			"backgroundColor": "#f3f3f3",
+			"margin": "0%",
 			"assets": {
 				"ios6AndPriorIcons": false,
 				"ios7AndLaterIcons": false,
@@ -17,7 +15,7 @@
 		},
 		"desktopBrowser": {},
 		"windows": {
-			"masterPicture": "public/time-tracker-white.svg",
+			"masterPicture": "graphics/tomato-outline.svg",
 			"pictureAspect": "noChange",
 			"backgroundColor": "#f44336",
 			"onConflict": "override",
@@ -43,21 +41,21 @@
 				"declared": true
 			},
 			"assets": {
-				"legacyIcon": true,
-				"lowResolutionIcons": true
+				"legacyIcon": false,
+				"lowResolutionIcons": false
 			}
 		},
 		"safariPinnedTab": {
+			"masterPicture": "graphics/tomato-outline.svg",
 			"pictureAspect": "silhouette",
 			"themeColor": "#f44336"
 		}
 	},
 	"settings": {
 		"scalingAlgorithm": "Mitchell",
-		"errorOnImageTooSmall": false
-	},
-	"versioning": {
-		"paramName": "v",
-		"paramValue": "rM3krp5a3p"
+		"errorOnImageTooSmall": false,
+		"readmeFile": false,
+		"htmlCodeFile": false,
+		"usePathAsIs": false
 	}
 }
