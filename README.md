@@ -2,7 +2,7 @@
 
 https://tomato-hours.now.sh/
 
-A pomodoro for tracking work hours and earnings.
+A pomodoro timer for tracking work hours and earnings.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
