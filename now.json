@@ -1,7 +1,6 @@
 {
   "name": "tomato-hours",
   "alias": "tomato-hours",
-  "type": "static",
   "static": {
     "rewrites": [
       {
