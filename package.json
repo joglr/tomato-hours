@@ -45,7 +45,7 @@
     "cli-real-favicon": "0.0.6",
     "cross-env": "^5.2.0",
     "react-scripts": "^2.0.4",
-    "rimraf": "^2.6.2"
+    "rimraf": "^3.0.0"
   },
   "browserslist": [
     ">0.2%",
