@@ -34,7 +34,7 @@
     "raven-js": "^3.27.0",
     "react": "^16.12.0",
     "react-dom": "^16.5.2",
-    "react-ga": "^2.5.3",
+    "react-ga": "^2.7.0",
     "react-md": "^1.7.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.5",
