@@ -43,7 +43,7 @@
     "roboto-fontface": "^0.10.0"
   },
   "devDependencies": {
-    "cli-real-favicon": "0.0.6",
+    "cli-real-favicon": "0.0.8",
     "cross-env": "^5.2.1",
     "react-scripts": "^2.1.8",
     "rimraf": "^3.0.1"
