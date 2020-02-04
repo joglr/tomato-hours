@@ -13,7 +13,7 @@
     "url": "https://github.com/joglr/tomato-hours.git"
   },
   "engines": {
-    "node": "12.x", 
+    "node": "12.x"
   },
   "scripts": {
     "start": "react-scripts start",
