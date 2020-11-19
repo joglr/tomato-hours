@@ -1,6 +1,6 @@
 # Tomato Hours
 
-https://tomato-hours.now.sh/
+https://tomato-hours.joglr.dev/
 
 A pomodoro timer for tracking work hours and earnings.
 
