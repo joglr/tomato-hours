@@ -1,18 +1,18 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { setDisplayAboutDialog } from './../actions'
-import { version, author } from './../../package.json'
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Grid from '@material-ui/core/Grid'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Button from '@material-ui/core/Button'
+import React from "react"
+import { connect } from "react-redux"
+import { setDisplayAboutDialog } from "./../actions"
+import { version, author } from "./../../package.json"
+import Dialog from "@material-ui/core/Dialog"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import Grid from "@material-ui/core/Grid"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
+import Button from "@material-ui/core/Button"
 
 let AboutDialog = ({
   onAboutDialogClose,
-  displayAboutDialog
+  displayAboutDialog,
 }) => (
   <Dialog
     open={displayAboutDialog}
@@ -33,11 +33,11 @@ let AboutDialog = ({
           primary="Author"
           secondary={
             <span>
-              {author.name}{' '}
+              {author.name}{" "}
               <a
                 href={
                   author.url +
-                  '/?utm_source=th-app&utm_medium=about-dialog'
+                  "/?utm_source=th-app&utm_medium=about-dialog"
                 }
                 target="_blank"
                 rel="noopener noreferrer">
@@ -50,15 +50,12 @@ let AboutDialog = ({
         />
       </ListItem>
     </List>
-    <div style={{ padding: '1rem' }}>
-      <Grid container alignContent="flex-end" spacing={16}>
+    <div style={{ padding: "1rem" }}>
+      <Grid container alignContent="flex-end" spacing={2}>
         <Grid item>
           <Button
-            element={'a'}
-            href={`mailto:${
-              author.email
-            }?subject=Tomato Hours`}
-            variant="raised"
+            href={`mailto:${author.email}?subject=Tomato Hours`}
+            variant="contained"
             color="primary">
             Contact author
           </Button>
@@ -74,17 +71,15 @@ let AboutDialog = ({
 )
 
 const mapStateToProps = ({
-  settings: { displayAboutDialog }
+  settings: { displayAboutDialog },
 }) => ({ displayAboutDialog })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onAboutDialogClose: () =>
-    dispatch(setDisplayAboutDialog(false))
+    dispatch(setDisplayAboutDialog(false)),
 })
 
-AboutDialog = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AboutDialog)
-
-export default AboutDialog

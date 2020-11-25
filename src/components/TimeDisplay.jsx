@@ -1,7 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import EllapsedTime from './EllapsedTime'
-import EarnedSalary from './EarnedSalary'
+import React from "react"
+import { connect } from "react-redux"
+import EllapsedTime from "./EllapsedTime"
+import EarnedSalary from "./EarnedSalary"
 
 let TimeDisplay = ({ showEarnedSalary, hourlyRate }) => (
   <div>
@@ -15,11 +15,11 @@ let TimeDisplay = ({ showEarnedSalary, hourlyRate }) => (
 )
 
 const mapStateToProps = ({
-  settings: { showEarnedSalary, hourlyRate }
+  settings: { showEarnedSalary, hourlyRate },
 }) => {
   return {
     showEarnedSalary,
-    hourlyRate
+    hourlyRate,
   }
 }
 

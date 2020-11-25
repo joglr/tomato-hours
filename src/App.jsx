@@ -1,28 +1,19 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import TopNav from './TopNav'
-import { withStyles } from '@material-ui/core/styles'
-import ViewLoader from './ViewLoader'
-import BottomNav from './BottomNav'
-import PreventAccidentalClosure from './PreventAccidentalClosure'
-import formatTime from './../helpers/format-time'
-import calculateEarnedSalary from './../helpers/calculate-earned-salary'
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import TopNav from "./components/TopNav"
+import ViewLoader from "./components/ViewLoader"
+import BottomNav from "./components/BottomNav"
+import PreventAccidentalClosure from "./components/PreventAccidentalClosure"
+import formatTime from "./helpers/format-time"
+import calculateEarnedSalary from "./helpers/calculate-earned-salary"
 
-const appName = 'Tomato Hours'
-
-const styles = () => ({
-  root: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column'
-  }
-})
+const appName = "Tomato Hours"
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      view: 0
+      view: 0,
     }
   }
   onNavChange(event, view) {
@@ -33,7 +24,7 @@ class App extends Component {
       active,
       ellapsedTime,
       showEarnedSalary,
-      hourlyRate
+      hourlyRate,
     } = this.props
     const formattedTime =
       ellapsedTime > 0
@@ -43,11 +34,16 @@ class App extends Component {
       showEarnedSalary && hourlyRate
         ? ` | ${calculateEarnedSalary({
             ellapsedTime,
-            hourlyRate
+            hourlyRate,
           })}`
-        : ''
+        : ""
     return (
-      <div className={this.props.classes.root}>
+      <div
+        style={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}>
         <title>
           {formattedTime}
           {formattedEarnedSalary}
@@ -58,7 +54,7 @@ class App extends Component {
           view={this.state.view}
           onNavChange={this.onNavChange.bind(this)}
         />
-        {active && process.env.NODE_ENV === 'production' ? (
+        {active && process.env.NODE_ENV === "production" ? (
           <PreventAccidentalClosure
             {...{
               addEventListener: window.addEventListener.bind(
@@ -66,7 +62,7 @@ class App extends Component {
               ),
               removeEventListener: window.removeEventListener.bind(
                 window
-              )
+              ),
             }}
           />
         ) : (
@@ -80,9 +76,9 @@ class App extends Component {
 const mapStateToProps = ({
   sessions: {
     currentSession: { startTime, parts, ellapsedTime },
-    sessions
+    sessions,
   },
-  settings: { showEarnedSalary, hourlyRate }
+  settings: { showEarnedSalary, hourlyRate },
 }) => ({
   active:
     startTime !== null ||
@@ -90,9 +86,7 @@ const mapStateToProps = ({
     sessions.length > 0,
   ellapsedTime,
   showEarnedSalary,
-  hourlyRate
+  hourlyRate,
 })
 
-export default connect(mapStateToProps)(
-  withStyles(styles)(App)
-)
+export default connect(mapStateToProps)(App)

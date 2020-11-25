@@ -3,5 +3,6 @@
   "prettier.semi": false,
   "prettier.jsxBracketSameLine": true,
   "prettier.printWidth": 60,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

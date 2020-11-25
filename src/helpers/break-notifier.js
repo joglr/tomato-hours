@@ -1,6 +1,6 @@
 import formatTime from './format-time'
 
-const breakNotifier = ({ store, navigator, calculateEllapsedTime, Date, setBreakHasBeenNotified }) => {
+const breakNotifier = ({ store, navigator, calculateEllapsedTime, setBreakHasBeenNotified }) => {
 	const {
 		sessions: { currentSession: { startTime, breakHasBeenNotified } },
 		settings: { sessionDuration, notifications }

@@ -16,5 +16,6 @@ npm-debug.log*
 yarn-debug.log*
 firebase-debug.log*
 yarn-error.log*
+.eslintcache
 
 TODO.md
