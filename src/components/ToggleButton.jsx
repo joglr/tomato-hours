@@ -1,6 +1,6 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import Tooltip from '@material-ui/core/Tooltip'
+import React from "react"
+import Tooltip from "@material-ui/core/Tooltip"
+import { Fab } from "@material-ui/core"
 
 const ToggleButton = ({
   primaryLabel,
@@ -8,23 +8,29 @@ const ToggleButton = ({
   PrimaryIcon,
   SecondaryIcon,
   condition,
-  disabled,
-  onButtonClick
+  disabled = false,
+  onButtonClick,
 }) => (
   <Tooltip
     id="tooltip-icon"
     title={condition ? primaryLabel : secondaryLabel}>
-    <div>
-      <Button
-        variant="fab"
-        color={condition ? 'primary' : 'secondary'}
+    <div
+      style={
+        {
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "center",
+        }
+      }>
+      <Fab
+        color={condition ? "primary" : "secondary"}
         aria-label={
           condition ? primaryLabel : secondaryLabel
         }
         disabled={disabled}
         onClick={onButtonClick({ condition })}>
         {condition ? PrimaryIcon : SecondaryIcon}
-      </Button>
+      </Fab>
     </div>
   </Tooltip>
 )

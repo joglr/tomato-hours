@@ -1,15 +1,14 @@
 //@ts-check
-import React from 'react'
-import { connect } from 'react-redux'
-// import TextField from 'react-md/lib/TextFields/TextField'
-import { setSessionTitle } from './../actions'
-import { withStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
+import React from "react"
+import { connect } from "react-redux"
+import { setSessionTitle } from "./../actions"
+import { withStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
 
 const styles = {
-  root: {}
+  root: {},
 }
-let TitleField = ({ title, onChangeField, classes }) => (
+let TitleField = ({ title, onChangeField }) => (
   <TextField
     label="Title"
     id="title-field"
@@ -20,13 +19,13 @@ let TitleField = ({ title, onChangeField, classes }) => (
 
 const mapStateToProps = ({
   sessions: {
-    currentSession: { title }
-  }
+    currentSession: { title },
+  },
 }) => ({ title })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onChangeField: ({ target: { value } }) =>
-    dispatch(setSessionTitle(value))
+    dispatch(setSessionTitle(value)),
 })
 
 export default connect(

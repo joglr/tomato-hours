@@ -1,35 +1,35 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import ListItem from '@material-ui/core/ListItem'
-import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Button from '@material-ui/core/Button'
-import EarnedSalaryIcon from '@material-ui/icons/AttachMoney'
-import BreaksIcon from '@material-ui/icons/WatchLater'
-import NotificationsIcon from '@material-ui/icons/Feedback'
-import Setting from './../components/Setting'
-import AboutDialog from './../components/AboutDialog'
+import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { withStyles } from "@material-ui/core/styles"
+import List from "@material-ui/core/List"
+import ListSubheader from "@material-ui/core/ListSubheader"
+import ListItem from "@material-ui/core/ListItem"
+import TextField from "@material-ui/core/TextField"
+import InputAdornment from "@material-ui/core/InputAdornment"
+import Button from "@material-ui/core/Button"
+import EarnedSalaryIcon from "@material-ui/icons/AttachMoney"
+import BreaksIcon from "@material-ui/icons/WatchLater"
+import NotificationsIcon from "@material-ui/icons/Feedback"
+import Setting from "./../components/Setting"
+import AboutDialog from "./../components/AboutDialog"
 import {
   settingActionCreators,
-  setDisplayAboutDialog
-} from './../actions'
+  setDisplayAboutDialog,
+} from "./../actions"
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    paddingBottom: theme.spacing.unit,
-    backgroundColor: theme.palette.background.paper
+    paddingBottom: theme.spacing(),
+    backgroundColor: theme.palette.background.paper,
   },
   textFieldIcon: {
-    color: '#757575'
+    color: "#757575",
   },
   showAboutDialogButton: {
-    display: 'block',
-    margin: 'auto'
-  }
+    display: "block",
+    margin: "auto",
+  },
 })
 const SettingsList = ({
   onSettingChange,
@@ -45,8 +45,9 @@ const SettingsList = ({
       <Setting
         label="Display earned salary"
         value={settings.showEarnedSalary}
-        onChange={value =>
-          onSettingChange('setDisplayEarnedSalary', value)}
+        onChange={(value) =>
+          onSettingChange("setDisplayEarnedSalary", value)
+        }
         Icon={<EarnedSalaryIcon />}
       />
       {settings.showEarnedSalary ? (
@@ -56,9 +57,12 @@ const SettingsList = ({
             type="number"
             value={settings.hourlyRate}
             placeholder="123"
-            min={1}
+            inputProps={{
+              min: 1,
+            }}
             onChange={({ target: { value } }) =>
-              onSettingChange('setHourlyRate', value)}
+              onSettingChange("setHourlyRate", value)
+            }
           />
         </ListItem>
       ) : (
@@ -67,8 +71,9 @@ const SettingsList = ({
       <Setting
         label="Enable breaks"
         value={settings.enableBreaks}
-        onChange={value =>
-          onSettingChange('setEnableBreaks', value)}
+        onChange={(value) =>
+          onSettingChange("setEnableBreaks", value)
+        }
         Icon={<BreaksIcon />}
       />
       {settings.enableBreaks ? (
@@ -76,18 +81,19 @@ const SettingsList = ({
           <TextField
             label="Session duration"
             type="number"
-            min="1"
             value={settings.sessionDuration}
             placeholder="in minutes"
-            InputProps={{
+            inputProps={{
+              min: 1,
               endAdornment: (
                 <InputAdornment position="end">
                   minutes
                 </InputAdornment>
-              )
+              ),
             }}
             onChange={({ target: { value } }) =>
-              onSettingChange('setSessionDuration', value)}
+              onSettingChange("setSessionDuration", value)
+            }
           />
         </ListItem>
       ) : (
@@ -97,21 +103,22 @@ const SettingsList = ({
         <Setting
           label="Break notifications"
           value={settings.notifications}
-          onChange={checked =>
+          onChange={(checked) =>
             checked
               ? Notification.requestPermission().then(
-                  result =>
+                  (result) =>
                     navigator.serviceWorker.ready.then(() =>
                       onSettingChange(
-                        'setEnableNotifications',
-                        result === 'granted'
+                        "setEnableNotifications",
+                        result === "granted"
                       )
                     )
                 )
               : onSettingChange(
-                  'setEnableNotifications',
+                  "setEnableNotifications",
                   checked
-                )}
+                )
+          }
           Icon={<NotificationsIcon />}
         />
       ) : (
@@ -126,7 +133,7 @@ const SettingsList = ({
 		*/}
     </List>
     <Button
-      variant="raised"
+      variant="contained"
       color="primary"
       className={classes.showAboutDialogButton}
       onClick={onAboutDialogOpen}>
@@ -138,20 +145,21 @@ const SettingsList = ({
 
 SettingsList.propTypes = {
   onSettingChange: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired
+  settings: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = ({ settings }) => ({
-  settings
+  settings,
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onSettingChange: (setting, value) =>
     dispatch(settingActionCreators[setting](value)),
   onAboutDialogOpen: () =>
-    dispatch(setDisplayAboutDialog(true))
+    dispatch(setDisplayAboutDialog(true)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(SettingsList)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(SettingsList))
